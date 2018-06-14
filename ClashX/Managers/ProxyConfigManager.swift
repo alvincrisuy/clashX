@@ -1,21 +1,19 @@
 
 import Foundation
 class ProxyConfigManager {
-    static let kProxyConfigPath = (NSHomeDirectory() as NSString).appendingPathComponent("/.config/clash/")
-    static let kProxyHelperPath = "/Library/Application Support/clashX/ProxyConfig"
-//    static let kProxyConfigPath = Bundle.main.path(forResource: "ProxyConfig", ofType: nil)
-    static let kVersion = "0.4.0"
+    static let kProxyConfigFolder = (NSHomeDirectory() as NSString).appendingPathComponent("/.config/clash")
+    static let kVersion = "0.1.0"
 
     
-    open static func checkVersion() -> Bool {
+    open static func vaildHelper() -> Bool {
         let scriptPath = "\(Bundle.main.resourcePath!)/check_proxy_helper.sh"
         print(scriptPath)
-        let appleScriptStr = "do shell script \"bash \(scriptPath)\""
+        let appleScriptStr = "do shell script \"bash \(scriptPath) \(kProxyConfigFolder) \(kVersion) \" "
         let appleScript = NSAppleScript(source: appleScriptStr)
         var dict: NSDictionary?
         if let res = appleScript?.executeAndReturnError(&dict) {
             print(res.stringValue ?? "")
-            if (res.stringValue?.contains("root")) ?? false {
+            if (res.stringValue?.contains("success")) ?? false {
                 return true
             }
         }
@@ -24,14 +22,21 @@ class ProxyConfigManager {
     }
 
     open static func install() -> Bool {
+        checkConfigDir()
         checkMMDB()
-        if  !checkVersion() {
+        
+        let proxyHelperPath = Bundle.main.path(forResource: "ProxyConfig", ofType: nil)
+        let targetPath = "\(kProxyConfigFolder)/ProxyConfig"
+        
+        if (!FileManager.default.fileExists(atPath: targetPath)) {
+            try? FileManager.default.copyItem(at: URL(fileURLWithPath: proxyHelperPath!), to: URL(fileURLWithPath: targetPath))
+        }
+        if !vaildHelper() {
             let scriptPath = "\(Bundle.main.resourcePath!)/install_proxy_helper.sh"
-            let appleScriptStr = "do shell script \"bash \(scriptPath)\" with administrator privileges"
+            let appleScriptStr = "do shell script \"bash \(scriptPath) \(kProxyConfigFolder) \" with administrator privileges"
             let appleScript = NSAppleScript(source: appleScriptStr)
             var dict: NSDictionary?
-            if let res = appleScript?.executeAndReturnError(&dict) {
-                print(res)
+            if let _ = appleScript?.executeAndReturnError(&dict) {
                 return true
             } else {
                 return false
@@ -40,9 +45,16 @@ class ProxyConfigManager {
         return true
     }
     
+    static func checkConfigDir() {
+        var isDir : ObjCBool = true
+        if !FileManager.default.fileExists(atPath: kProxyConfigFolder, isDirectory:&isDir) {
+            try? FileManager.default.createDirectory(atPath: kProxyConfigFolder, withIntermediateDirectories: false, attributes: nil)
+        }
+    }
+    
     static func checkMMDB() {
         let fileManage = FileManager.default
-        let destMMDBPath = (NSHomeDirectory() as NSString).appendingPathComponent("/.config/clash/Country.mmdb")
+        let destMMDBPath = "\(kProxyConfigFolder)/Country.mmdb"
         if !fileManage.fileExists(atPath: destMMDBPath) {
             let mmdbPath = Bundle.main.path(forResource: "Country", ofType: "mmdb")
             try! fileManage.copyItem(at: URL(fileURLWithPath: mmdbPath!), to: URL(fileURLWithPath: destMMDBPath))
@@ -51,7 +63,7 @@ class ProxyConfigManager {
     
     open static func setUpSystemProxy(port: Int?,socksPort: Int?) -> Bool {
         let task = Process()
-        task.launchPath = kProxyHelperPath
+        task.launchPath = "\(kProxyConfigFolder)/ProxyConfig"
         if let port = port,let socksPort = socksPort {
             task.arguments = [String(port),String(socksPort), "enable"]
         } else {

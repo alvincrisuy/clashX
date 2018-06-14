@@ -7,6 +7,9 @@
 //
 
 import Cocoa
+
+
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem!
@@ -19,8 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let ssQueue = DispatchQueue(label: "com.w2fzu.ssqueue", attributes: .concurrent)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
-        
+        signal(SIGPIPE, SIG_IGN)
+
         _ = ProxyConfigManager.install()
         
         statusItem = NSStatusBar.system.statusItem(withLength: AppDelegate.StatusItemIconWidth)
@@ -91,4 +94,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 }
+
 
