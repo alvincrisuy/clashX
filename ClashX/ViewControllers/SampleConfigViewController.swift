@@ -17,12 +17,14 @@ class SampleConfigViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         serverencryptMethodBox.addItems(withObjectValues: [
+            "RC4-MD5",
             "AES-128-CTR",
             "AES-192-CTR",
             "AES-256-CTR",
             "AES-128-CFB",
             "AES-192-CFB",
             "AES-256-CFB",
+            "CHACHA20",
             "CHACHA20-IETF",
             "XCHACHA20",
             "AEAD_AES_128_GCM",
