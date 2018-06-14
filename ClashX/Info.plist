@@ -29,6 +29,6 @@
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
+	<string>SWBApplication</string>
 </dict>
 </plist>

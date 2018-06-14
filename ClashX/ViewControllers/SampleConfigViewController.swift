@@ -64,12 +64,41 @@ class SampleConfigViewController: NSViewController {
                 
     }
     
+        func shakeWindows(){
+            let numberOfShakes:Int = 8
+            let durationOfShake:Float = 0.5
+            let vigourOfShake:Float = 0.05
+            let window = self.view.window
+            let frame:CGRect = (window?.frame)!
+            let shakeAnimation = CAKeyframeAnimation()
+    
+            let shakePath = CGMutablePath()
+            shakePath.move(to: CGPoint(x:NSMinX(frame), y:NSMinX(frame)))
+    
+            for _ in 1...numberOfShakes{
+                shakePath.addLine(to: CGPoint(x: NSMinX(frame) - frame.size.width * CGFloat(vigourOfShake), y: NSMinY(frame)))
+                shakePath.addLine(to: CGPoint(x: NSMinX(frame) + frame.size.width * CGFloat(vigourOfShake), y: NSMinY(frame)))
+            }
+    
+            shakePath.closeSubpath()
+            shakeAnimation.path = shakePath
+            shakeAnimation.duration = CFTimeInterval(durationOfShake)
+            window?.animations = [NSAnimatablePropertyKey("frameOrigin"):shakeAnimation]
+            window?.animator().setFrameOrigin(window!.frame.origin)
+        }
+
+    
     
     @IBAction func actionConfirm(_ sender: Any) {
         if (vaildConfig()) {
             generateConfig()
+            self.view.window?.windowController?.close()
+            DispatchQueue(label: "com.w2fzu.ssqueue", attributes: .concurrent).async {
+                updateConfigC()
+            }
+        } else {
+            shakeWindows()
         }
-        self.view.window?.windowController?.close()
         
     }
     

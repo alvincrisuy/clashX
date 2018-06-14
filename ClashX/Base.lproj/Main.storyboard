@@ -16,6 +16,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ClashX" customModuleProvider="target">
                     <connections>
+                        <outlet property="autoStartMenuItem" destination="B1J-XB-BiZ" id="xaS-h5-qd0"/>
                         <outlet property="proxySettingMenuItem" destination="8se-yr-wmp" id="yvm-QP-yoA"/>
                         <outlet property="statusMenu" destination="Afa-lD-EbR" id="cov-E9-WrO"/>
                     </connections>
@@ -30,6 +31,9 @@
                         </menuItem>
                         <menuItem title="start at login" id="B1J-XB-BiZ">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="actionStartAtLogin:" target="Voe-Tx-rLC" id="aie-1F-HjZ"/>
+                            </connections>
                         </menuItem>
                         <menuItem title="copy export command" id="Jmb-PK-rMW">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -44,25 +48,22 @@
                                     <menuItem title="generate config" id="5Ab-VJ-iIm">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="Byh-1P-5fs" kind="show" id="mVy-i5-se3"/>
+                                            <action selector="actionGenConfig:" target="Voe-Tx-rLC" id="SBd-vV-e1R"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="open Config Folder" id="DwE-WX-ETZ">
+                                    <menuItem title="edit config" id="DwE-WX-ETZ">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="openConfigFolder:" target="Voe-Tx-rLC" id="6Ke-Bi-AAZ"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="update config" id="q3G-VH-eyy">
+                                    <menuItem title="reload config" id="q3G-VH-eyy">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="actionUpdateConfig:" target="Voe-Tx-rLC" id="oW5-Ll-SY8"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="import Config" id="GRE-Ra-Pkx">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="reload Config" id="MKB-4v-QNy">
+                                    <menuItem title="import config" id="GRE-Ra-Pkx">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                 </items>
@@ -84,7 +85,7 @@
         <!--Window Controller-->
         <scene sceneID="seD-T7-5qr">
             <objects>
-                <windowController id="Byh-1P-5fs" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="sampleConfigGenerator" id="Byh-1P-5fs" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="q8i-4q-6dO">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

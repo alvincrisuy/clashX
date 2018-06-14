@@ -7,8 +7,7 @@
 //
 
 import Cocoa
-
-
+import LaunchAtLogin
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -18,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var proxySettingMenuItem: NSMenuItem!
+    @IBOutlet weak var autoStartMenuItem: NSMenuItem!
     
     let ssQueue = DispatchQueue(label: "com.w2fzu.ssqueue", attributes: .concurrent)
 
@@ -44,6 +44,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func updateMenuItem(){
         proxySettingMenuItem.state = ConfigManager.proxyPortAutoSet ? .on : .off
+        autoStartMenuItem.state = LaunchAtLogin.isEnabled ? .on:.off
+        
     }
     
     func startProxy() {
@@ -83,6 +85,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pasteboard.setString("export https_proxy=http://127.0.0.1:\(ConfigManager.httpProxyPort);export http_proxy=http://127.0.0.1:\(ConfigManager.httpProxyPort)", forType: .string)
     }
     
+    @IBAction func actionStartAtLogin(_ sender: NSMenuItem) {
+        LaunchAtLogin.isEnabled = !LaunchAtLogin.isEnabled
+        updateMenuItem()
+    }
+    
+    var genConfigWindow:NSWindowController?=nil
+    @IBAction func actionGenConfig(_ sender: Any) {
+        let ctrl = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
+            .instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "sampleConfigGenerator")) as! NSWindowController
+        genConfigWindow?.close()
+        genConfigWindow=ctrl
+        ctrl.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        ctrl.window?.makeKeyAndOrderFront(self)
+
+    }
     
     @IBAction func openConfigFolder(_ sender: Any) {
         let path = (NSHomeDirectory() as NSString).appendingPathComponent("/.config/clash/config.ini")

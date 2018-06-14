@@ -10,8 +10,9 @@
 		4989F98020D01C8F0001E564 /* clash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989F97E20D01C8F0001E564 /* clash.a */; };
 		4989F98420D02D200001E564 /* Country.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = 4989F98320D02D200001E564 /* Country.mmdb */; };
 		4989F98B20D0AD800001E564 /* SampleConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989F98920D0AD800001E564 /* SampleConfigViewController.swift */; };
-		4989F98C20D0AD800001E564 /* SampleConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4989F98A20D0AD800001E564 /* SampleConfigViewController.xib */; };
 		4989F98E20D0AE990001E564 /* sampleConfig.ini in Resources */ = {isa = PBXBuildFile; fileRef = 4989F98D20D0AE990001E564 /* sampleConfig.ini */; };
+		4997732520D251A60009B136 /* SWBApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4997732320D251A60009B136 /* SWBApplication.m */; };
+		4997735920D25AB10009B136 /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4997735820D25AB10009B136 /* LaunchAtLogin.framework */; };
 		49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF3B2020CD7463001EBF94 /* AppDelegate.swift */; };
 		49CF3B2520CD7465001EBF94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B2420CD7465001EBF94 /* Assets.xcassets */; };
 		49CF3B2820CD7465001EBF94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B2620CD7465001EBF94 /* Main.storyboard */; };
@@ -41,8 +42,10 @@
 		4989F97F20D01C8F0001E564 /* clash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clash.h; sourceTree = "<group>"; };
 		4989F98320D02D200001E564 /* Country.mmdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Country.mmdb; sourceTree = "<group>"; };
 		4989F98920D0AD800001E564 /* SampleConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleConfigViewController.swift; sourceTree = "<group>"; };
-		4989F98A20D0AD800001E564 /* SampleConfigViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleConfigViewController.xib; sourceTree = "<group>"; };
 		4989F98D20D0AE990001E564 /* sampleConfig.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sampleConfig.ini; sourceTree = "<group>"; };
+		4997732320D251A60009B136 /* SWBApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWBApplication.m; sourceTree = "<group>"; };
+		4997732420D251A60009B136 /* SWBApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWBApplication.h; sourceTree = "<group>"; };
+		4997735820D25AB10009B136 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
 		49CF3B1D20CD7463001EBF94 /* ClashX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClashX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CF3B2020CD7463001EBF94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49CF3B2420CD7465001EBF94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4997735920D25AB10009B136 /* LaunchAtLogin.framework in Frameworks */,
 				4989F98020D01C8F0001E564 /* clash.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,9 +82,25 @@
 			isa = PBXGroup;
 			children = (
 				4989F98920D0AD800001E564 /* SampleConfigViewController.swift */,
-				4989F98A20D0AD800001E564 /* SampleConfigViewController.xib */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4997732220D251A60009B136 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				4997732320D251A60009B136 /* SWBApplication.m */,
+				4997732420D251A60009B136 /* SWBApplication.h */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		4997735720D25AB00009B136 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4997735820D25AB10009B136 /* LaunchAtLogin.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		49CF3B1420CD7463001EBF94 = {
@@ -88,6 +108,7 @@
 			children = (
 				49CF3B1F20CD7463001EBF94 /* ClashX */,
 				49CF3B1E20CD7463001EBF94 /* Products */,
+				4997735720D25AB00009B136 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +123,7 @@
 		49CF3B1F20CD7463001EBF94 /* ClashX */ = {
 			isa = PBXGroup;
 			children = (
+				4997732220D251A60009B136 /* Basic */,
 				4989F98520D0AA300001E564 /* ViewControllers */,
 				49CF3B5D20CE80D2001EBF94 /* script */,
 				49CF3B5A20CE8054001EBF94 /* Managers */,
@@ -185,6 +207,8 @@
 				49CF3B1920CD7463001EBF94 /* Sources */,
 				49CF3B1A20CD7463001EBF94 /* Frameworks */,
 				49CF3B1B20CD7463001EBF94 /* Resources */,
+				4997735A20D25ACC0009B136 /* ShellScript */,
+				4997735C20D25AF00009B136 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -264,13 +288,42 @@
 				49CF3B4020CD7845001EBF94 /* menu_icon_disabled@2x.png in Resources */,
 				49CF3B3F20CD7845001EBF94 /* menu_icon.png in Resources */,
 				4989F98420D02D200001E564 /* Country.mmdb in Resources */,
-				4989F98C20D0AD800001E564 /* SampleConfigViewController.xib in Resources */,
 				4989F98E20D0AE990001E564 /* sampleConfig.ini in Resources */,
 				49CF3B6320CED9CF001EBF94 /* check_proxy_helper.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4997735A20D25ACC0009B136 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Carthage/Build/Mac/LaunchAtLogin.framework/Resources/copy-helper.sh";
+		};
+		4997735C20D25AF00009B136 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/LaunchAtLogin.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		49CF3B1920CD7463001EBF94 /* Sources */ = {
@@ -279,6 +332,7 @@
 			files = (
 				4989F98B20D0AD800001E564 /* SampleConfigViewController.swift in Sources */,
 				49CF3B5C20CE8068001EBF94 /* ProxyConfigManager.swift in Sources */,
+				4997732520D251A60009B136 /* SWBApplication.m in Sources */,
 				49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */,
 				49CF3B6520CEE06C001EBF94 /* ConfigManager.swift in Sources */,
 			);
@@ -419,6 +473,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = MEWHFZ92DY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = ClashX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -429,6 +487,7 @@
 					"$(PROJECT_DIR)/ClashX",
 					"$(PROJECT_DIR)/ClashX/clash",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.west2online.ClashX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ClashX/ClashX-Bridging-Header.h";
@@ -445,6 +504,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = MEWHFZ92DY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = ClashX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -455,6 +518,7 @@
 					"$(PROJECT_DIR)/ClashX",
 					"$(PROJECT_DIR)/ClashX/clash",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.west2online.ClashX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ClashX/ClashX-Bridging-Header.h";
