@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import LaunchAtLogin
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

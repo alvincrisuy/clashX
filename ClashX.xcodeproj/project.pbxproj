@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495A44BF20D2660A00888A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A44BE20D2660A00888A0A /* AppDelegate.swift */; };
+		495A44CD20D266BA00888A0A /* ClashXLaunchHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 495A44BC20D2660A00888A0A /* ClashXLaunchHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		495A44D320D267D000888A0A /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A44D220D267D000888A0A /* LaunchAtLogin.swift */; };
 		4989F98020D01C8F0001E564 /* clash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989F97E20D01C8F0001E564 /* clash.a */; };
 		4989F98420D02D200001E564 /* Country.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = 4989F98320D02D200001E564 /* Country.mmdb */; };
 		4989F98B20D0AD800001E564 /* SampleConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989F98920D0AD800001E564 /* SampleConfigViewController.swift */; };
 		4989F98E20D0AE990001E564 /* sampleConfig.ini in Resources */ = {isa = PBXBuildFile; fileRef = 4989F98D20D0AE990001E564 /* sampleConfig.ini */; };
 		4997732520D251A60009B136 /* SWBApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4997732320D251A60009B136 /* SWBApplication.m */; };
-		4997735920D25AB10009B136 /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4997735820D25AB10009B136 /* LaunchAtLogin.framework */; };
 		49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF3B2020CD7463001EBF94 /* AppDelegate.swift */; };
 		49CF3B2520CD7465001EBF94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B2420CD7465001EBF94 /* Assets.xcassets */; };
 		49CF3B2820CD7465001EBF94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B2620CD7465001EBF94 /* Main.storyboard */; };
@@ -25,9 +27,17 @@
 		49CF3B6120CE8404001EBF94 /* ProxyConfig in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B6020CE8404001EBF94 /* ProxyConfig */; };
 		49CF3B6320CED9CF001EBF94 /* check_proxy_helper.sh in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B6220CED934001EBF94 /* check_proxy_helper.sh */; };
 		49CF3B6520CEE06C001EBF94 /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF3B6420CEE06C001EBF94 /* ConfigManager.swift */; };
+		49E07A8C20D501A000A088A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E07A8920D501A000A088A3 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		495A44CE20D2671F00888A0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49CF3B1520CD7463001EBF94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 495A44BB20D2660A00888A0A;
+			remoteInfo = ClashXLaunchHelper;
+		};
 		49CF3B4F20CE5232001EBF94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 49CF3B4B20CE5232001EBF94 /* ProxyConfig.xcodeproj */;
@@ -37,7 +47,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		495A44CC20D266B000888A0A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				495A44CD20D266BA00888A0A /* ClashXLaunchHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		495A44BC20D2660A00888A0A /* ClashXLaunchHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClashXLaunchHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		495A44BE20D2660A00888A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		495A44C720D2660B00888A0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		495A44C820D2660B00888A0A /* ClashXLaunchHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClashXLaunchHelper.entitlements; sourceTree = "<group>"; };
+		495A44D220D267D000888A0A /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
 		4989F97E20D01C8F0001E564 /* clash.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = clash.a; sourceTree = "<group>"; };
 		4989F97F20D01C8F0001E564 /* clash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clash.h; sourceTree = "<group>"; };
 		4989F98320D02D200001E564 /* Country.mmdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Country.mmdb; sourceTree = "<group>"; };
@@ -45,7 +73,6 @@
 		4989F98D20D0AE990001E564 /* sampleConfig.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sampleConfig.ini; sourceTree = "<group>"; };
 		4997732320D251A60009B136 /* SWBApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWBApplication.m; sourceTree = "<group>"; };
 		4997732420D251A60009B136 /* SWBApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWBApplication.h; sourceTree = "<group>"; };
-		4997735820D25AB10009B136 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
 		49CF3B1D20CD7463001EBF94 /* ClashX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClashX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CF3B2020CD7463001EBF94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49CF3B2420CD7465001EBF94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,14 +90,21 @@
 		49CF3B6020CE8404001EBF94 /* ProxyConfig */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ProxyConfig; path = "../../../../../Library/Developer/Xcode/DerivedData/ClashX-bcbrsbofqgevdffhsbymjskmsxik/Build/Products/Debug/ProxyConfig"; sourceTree = "<group>"; };
 		49CF3B6220CED934001EBF94 /* check_proxy_helper.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = check_proxy_helper.sh; sourceTree = "<group>"; };
 		49CF3B6420CEE06C001EBF94 /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
+		49E07A8A20D501A000A088A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		495A44B920D2660A00888A0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49CF3B1A20CD7463001EBF94 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4997735920D25AB10009B136 /* LaunchAtLogin.framework in Frameworks */,
 				4989F98020D01C8F0001E564 /* clash.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +112,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		495A44BD20D2660A00888A0A /* ClashXLaunchHelper */ = {
+			isa = PBXGroup;
+			children = (
+				49E07A8920D501A000A088A3 /* Main.storyboard */,
+				495A44BE20D2660A00888A0A /* AppDelegate.swift */,
+				495A44C720D2660B00888A0A /* Info.plist */,
+				495A44C820D2660B00888A0A /* ClashXLaunchHelper.entitlements */,
+			);
+			path = ClashXLaunchHelper;
+			sourceTree = "<group>";
+		};
 		4989F98520D0AA300001E564 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,24 +136,17 @@
 			children = (
 				4997732320D251A60009B136 /* SWBApplication.m */,
 				4997732420D251A60009B136 /* SWBApplication.h */,
+				495A44D220D267D000888A0A /* LaunchAtLogin.swift */,
 			);
 			path = Basic;
-			sourceTree = "<group>";
-		};
-		4997735720D25AB00009B136 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4997735820D25AB10009B136 /* LaunchAtLogin.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		49CF3B1420CD7463001EBF94 = {
 			isa = PBXGroup;
 			children = (
 				49CF3B1F20CD7463001EBF94 /* ClashX */,
+				495A44BD20D2660A00888A0A /* ClashXLaunchHelper */,
 				49CF3B1E20CD7463001EBF94 /* Products */,
-				4997735720D25AB00009B136 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				49CF3B1D20CD7463001EBF94 /* ClashX.app */,
+				495A44BC20D2660A00888A0A /* ClashXLaunchHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -200,6 +239,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		495A44BB20D2660A00888A0A /* ClashXLaunchHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 495A44C920D2660B00888A0A /* Build configuration list for PBXNativeTarget "ClashXLaunchHelper" */;
+			buildPhases = (
+				495A44B820D2660A00888A0A /* Sources */,
+				495A44B920D2660A00888A0A /* Frameworks */,
+				495A44BA20D2660A00888A0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClashXLaunchHelper;
+			productName = ClashXLaunchHelper;
+			productReference = 495A44BC20D2660A00888A0A /* ClashXLaunchHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		49CF3B1C20CD7463001EBF94 /* ClashX */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49CF3B2D20CD7465001EBF94 /* Build configuration list for PBXNativeTarget "ClashX" */;
@@ -207,12 +263,12 @@
 				49CF3B1920CD7463001EBF94 /* Sources */,
 				49CF3B1A20CD7463001EBF94 /* Frameworks */,
 				49CF3B1B20CD7463001EBF94 /* Resources */,
-				4997735A20D25ACC0009B136 /* ShellScript */,
-				4997735C20D25AF00009B136 /* ShellScript */,
+				495A44CC20D266B000888A0A /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				495A44CF20D2671F00888A0A /* PBXTargetDependency */,
 			);
 			name = ClashX;
 			productName = ClashX;
@@ -229,6 +285,14 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = west2online;
 				TargetAttributes = {
+					495A44BB20D2660A00888A0A = {
+						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
 					49CF3B1C20CD7463001EBF94 = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 0940;
@@ -260,6 +324,7 @@
 			projectRoot = "";
 			targets = (
 				49CF3B1C20CD7463001EBF94 /* ClashX */,
+				495A44BB20D2660A00888A0A /* ClashXLaunchHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -275,6 +340,14 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		495A44BA20D2660A00888A0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E07A8C20D501A000A088A3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49CF3B1B20CD7463001EBF94 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,37 +368,15 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		4997735A20D25ACC0009B136 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Carthage/Build/Mac/LaunchAtLogin.framework/Resources/copy-helper.sh";
-		};
-		4997735C20D25AF00009B136 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/LaunchAtLogin.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
+		495A44B820D2660A00888A0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				495A44BF20D2660A00888A0A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49CF3B1920CD7463001EBF94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -333,12 +384,21 @@
 				4989F98B20D0AD800001E564 /* SampleConfigViewController.swift in Sources */,
 				49CF3B5C20CE8068001EBF94 /* ProxyConfigManager.swift in Sources */,
 				4997732520D251A60009B136 /* SWBApplication.m in Sources */,
+				495A44D320D267D000888A0A /* LaunchAtLogin.swift in Sources */,
 				49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */,
 				49CF3B6520CEE06C001EBF94 /* ConfigManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		495A44CF20D2671F00888A0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 495A44BB20D2660A00888A0A /* ClashXLaunchHelper */;
+			targetProxy = 495A44CE20D2671F00888A0A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		49CF3B2620CD7465001EBF94 /* Main.storyboard */ = {
@@ -349,9 +409,57 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
+		49E07A8920D501A000A088A3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49E07A8A20D501A000A088A3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		495A44CA20D2660B00888A0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ClashXLaunchHelper/ClashXLaunchHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MEWHFZ92DY;
+				INFOPLIST_FILE = ClashXLaunchHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.west2online.ClashX.LaunchHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		495A44CB20D2660B00888A0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ClashXLaunchHelper/ClashXLaunchHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MEWHFZ92DY;
+				INFOPLIST_FILE = ClashXLaunchHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.west2online.ClashX.LaunchHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		49CF3B2B20CD7465001EBF94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -529,6 +637,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		495A44C920D2660B00888A0A /* Build configuration list for PBXNativeTarget "ClashXLaunchHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				495A44CA20D2660B00888A0A /* Debug */,
+				495A44CB20D2660B00888A0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		49CF3B1820CD7463001EBF94 /* Build configuration list for PBXProject "ClashX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
