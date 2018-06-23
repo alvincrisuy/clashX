@@ -2,7 +2,7 @@
 
 A rule based proxy For Mac base on [clash](https://github.com/Dreamacro/clash).
 
-#Features
+# Features
 
 HTTP/HTTPS and SOCKS proxy
 Surge like configuration
@@ -10,7 +10,7 @@ GeoIP rule support
 
 # Install
 
-You can download from release page
+You can download from [release](https://github.com/yichengchen/clashX/releases) page
 
 
 # Config
