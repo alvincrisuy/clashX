@@ -1,15 +1,18 @@
 PODS:
+  - Alamofire (4.7.2)
   - LetsMove (1.24)
   - Sparkle (1.19.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.7)
   - LetsMove
   - Sparkle
 
 SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   LetsMove: fefe56bc7bc7fb7d37049e28a14f297961229fc5
   Sparkle: 8486d2493599665e466b5076e72b28849776e32f
 
-PODFILE CHECKSUM: f477142729aa816e1f94df8dbeb00e9d6727329c
+PODFILE CHECKSUM: b2b39b8e62c0d2ab96d46d2ad94508125dad7df0
 
 COCOAPODS: 1.4.0

@@ -8,6 +8,7 @@
 
 import Cocoa
 import LetsMove
+import Alamofire
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -68,7 +69,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if ConfigManager.proxyPortAutoSet {
             _ = ProxyConfigManager.setUpSystemProxy(port: ConfigManager.httpProxyPort,socksPort: ConfigManager.socksProxyPort)
         }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0) {
+            self.startRPCInterface()
+
+        }
     }
+    
+    func startRPCInterface(){
+        
+        class info:Codable {
+            let up:Int
+            let down:Int
+        }
+
+        request("http://127.0.0.1:8080/traffic").stream { [weak self] (data) in
+            guard let strongSelf = self else {return}
+            if let jsonData = try? JSONSerialization.jsonObject(with: data) as? [String:Int] {
+                ((strongSelf.statusItem.view) as! StatusItemView).updateSpeedLabel(up: jsonData!["up"]!, down: jsonData!["down"]!)
+
+            }
+        }
+    }
+    
     
     @IBAction func actionQuit(_ sender: Any) {
         NSApplication.shared.terminate(self)
