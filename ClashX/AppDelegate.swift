@@ -12,7 +12,7 @@ import LetsMove
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem!
-    static let StatusItemIconWidth: CGFloat = NSStatusItem.variableLength
+    static let StatusItemIconWidth: CGFloat = NSStatusItem.variableLength * 2
 
 
     @IBOutlet weak var statusMenu: NSMenu!
@@ -25,17 +25,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         PFMoveToApplicationsFolderIfNecessary()
     }
     
+
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         signal(SIGPIPE, SIG_IGN)
 
         _ = ProxyConfigManager.install()
-        
-        statusItem = NSStatusBar.system.statusItem(withLength: AppDelegate.StatusItemIconWidth)
-        statusItem.menu = statusMenu
+        statusItem = NSStatusBar.system.statusItem(withLength: 57)
+        let view = StatusItemView.create(statusItem: statusItem,statusMenu: statusMenu)
+        statusItem.view = view
         updateMenuItem()
         startProxy()
         
     }
+    
 
     func applicationWillTerminate(_ aNotification: Notification) {
         if ConfigManager.proxyPortAutoSet {
