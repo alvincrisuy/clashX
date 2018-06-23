@@ -135,9 +135,13 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/LetsMove/LetsMove.framework"
+  install_framework "${PODS_ROOT}/Sparkle/Sparkle.framework"
+  install_dsym "${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/LetsMove/LetsMove.framework"
+  install_framework "${PODS_ROOT}/Sparkle/Sparkle.framework"
+  install_dsym "${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

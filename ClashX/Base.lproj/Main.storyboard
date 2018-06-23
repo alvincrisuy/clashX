@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,6 +70,19 @@
                                 </items>
                             </menu>
                         </menuItem>
+                        <menuItem title="Help" id="Dd9-2F-FVY">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="Help" id="ogW-pn-jeR">
+                                <items>
+                                    <menuItem title="check update" id="p0T-J8-Emx">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="checkForUpdates:" target="fth-rt-saN" id="gaF-35-d7h"/>
+                                        </connections>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </menuItem>
                         <menuItem title="quit" id="NXU-86-Eem">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
@@ -78,6 +92,7 @@
                     </items>
                 </menu>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="fth-rt-saN" customClass="SUUpdater"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>

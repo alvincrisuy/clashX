@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>ClashX ChangeLog</title>
+    <link>https://github.com/yichengchen/clashX</link>
+    <description>Most recent changes with links to updates.</description>
+    <language>cn</language>
+      <item>
+        <title>Version 0.5</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>Add icon and auto update.</li>
+              <li>Sync the latest code from clash.</li>
+              <li>Support url-test rule.</li>
+              <li>Fix handle chunked data.</li>
+            </ul>
+          ]]>
+        </description>
+        <pubDate>Sat, 23 Jul 2018 15:20:11 +0000</pubDate>
+        <enclosure url="https://github.com/yichengchen/clashX/releases/download/0.5/ClashX.app.zip" sparkle:version="2.0" length="107758" type="application/octet-stream" sparkle:dsaSignature="MCwCFCdoW13VBGJWIfIklKxQVyetgxE7AhQTVuY9uQT0KOV1UEk21epBsGZMPg==" />
+      </item>
+  </channel>
+</rss>
