@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import LetsMove
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -20,6 +21,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let ssQueue = DispatchQueue(label: "com.w2fzu.ssqueue", attributes: .concurrent)
 
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        PFMoveToApplicationsFolderIfNecessary()
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         signal(SIGPIPE, SIG_IGN)
 
