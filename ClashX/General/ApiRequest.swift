@@ -30,10 +30,15 @@ class ApiRequest{
     }
     
     static func requestConfigUpdate(callback:@escaping ((Bool)->())){
-        request(ConfigManager.apiUrl + "/configs", method: .put).responseJSON{
-            data in
-            // response is undocumented yet.
-            callback(true)
+//        request(ConfigManager.apiUrl + "/configs", method: .put).responseJSON{
+//            data in
+//            // response is undocumented yet.
+//            callback(true)
+//        }
+        if let path = Bundle.main.resourceURL?.deletingLastPathComponent().deletingLastPathComponent().absoluteString {
+            NSLog("restart \(path)")
+            _ = Process.launchedProcess(launchPath: "/usr/bin/open", arguments: [path])
+            NSApp.terminate(self)
         }
     }
 }

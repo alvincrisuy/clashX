@@ -15,7 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem!
     static let StatusItemIconWidth: CGFloat = NSStatusItem.variableLength * 2
 
-
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var proxySettingMenuItem: NSMenuItem!
     @IBOutlet weak var autoStartMenuItem: NSMenuItem!
@@ -25,15 +24,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         signal(SIGPIPE, SIG_IGN)
-
+        
         _ = ProxyConfigManager.install()
         PFMoveToApplicationsFolderIfNecessary()
+        self.startProxy()
 
         statusItem = NSStatusBar.system.statusItem(withLength: 57)
         let view = StatusItemView.create(statusItem: statusItem,statusMenu: statusMenu)
         statusItem.view = view
         updateMenuItem()
-        startProxy()
         
     }
     
