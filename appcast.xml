@@ -6,19 +6,17 @@
     <description>Most recent changes with links to updates.</description>
     <language>cn</language>
       <item>
-        <title>Version 0.5</title>
+        <title>Version 0.6</title>
         <description>
           <![CDATA[
             <ul>
-              <li>Add icon and auto update.</li>
-              <li>Sync the latest code from clash.</li>
-              <li>Support url-test rule.</li>
-              <li>Fix handle chunked data.</li>
+            <li>Sync the latest code with clash</li>
+            <li>Show network speed in menu bar</li>
             </ul>
           ]]>
         </description>
-        <pubDate>Sat, 23 Jul 2018 15:20:11 +0000</pubDate>
-        <enclosure url="https://github.com/yichengchen/clashX/releases/download/0.5/ClashX.app.zip" sparkle:version="0.5" type="application/octet-stream"/>
+        <pubDate>Sat, 8 Aug 2018 15:20:11 +0000</pubDate>
+        <enclosure url="https://github.com/yichengchen/clashX/releases/download/0.6/ClashX.app.zip" sparkle:version="0.6" type="application/octet-stream"/>
       </item>
   </channel>
 </rss>
