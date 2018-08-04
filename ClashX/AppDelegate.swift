@@ -43,7 +43,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let view = StatusItemView.create(statusItem: statusItem,statusMenu: statusMenu)
         statusItem.view = view
         setupData()
-        updateProxyList()
         
     }
     
@@ -86,6 +85,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 case .global:self.proxyModeGlobalMenuItem.state = .on
                 case .rule:self.proxyModeRuleMenuItem.state = .on
                 }
+                
+                self.updateProxyList()
         }.disposed(by: disposeBag)
         
         LaunchAtLogin.shared.isEnableVirable
@@ -98,10 +99,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateProxyList() {
         ProxyMenuItemFactory.menuItems { [unowned self] (menus) in
             let startIndex = self.statusMenu.items.index(of: self.separatorLineTop)! + 1
-            let endIndex = self.statusMenu.items.index(of: self.sepatatorLineEndProxySelect)! + 1
+            let endIndex = self.statusMenu.items.index(of: self.sepatatorLineEndProxySelect)!
             var items = self.statusMenu.items
 
-            for idx in startIndex+1 ..< endIndex {
+            for idx in startIndex ..< endIndex {
                 items.remove(at: idx)
             }
             for each in menus {

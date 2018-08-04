@@ -15,8 +15,20 @@ class ProxyMenuItemFactory {
         ApiRequest.requestProxyGroupList { (res) in
             let dataDict = JSON(res)
             var menuItems = [NSMenuItem]()
+            if (ConfigManager.shared.currentConfig?.mode == .direct) {
+                completionHandler(menuItems)
+                return
+            }
+            
             for proxyGroup in dataDict.dictionaryValue {
                 guard proxyGroup.value["type"].stringValue == "Selector" else {continue}
+                
+                if (ConfigManager.shared.currentConfig?.mode == .global) {
+                    if proxyGroup.key != "GLOBAL" {continue}
+                } else {
+                    if proxyGroup.key == "GLOBAL" {continue}
+                }
+                
                 let menu = NSMenuItem(title: proxyGroup.key, action: nil, keyEquivalent: "")
                 let selectedName = proxyGroup.value["now"].stringValue
                 let submenu = NSMenu(title: proxyGroup.key)
