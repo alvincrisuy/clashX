@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var proxyModeRuleMenuItem: NSMenuItem!
     
     @IBOutlet weak var separatorLineTop: NSMenuItem!
+    @IBOutlet weak var sepatatorLineEndProxySelect: NSMenuItem!
     
     var disposeBag = DisposeBag()
     let ssQueue = DispatchQueue(label: "com.w2fzu.ssqueue", attributes: .concurrent)
@@ -42,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let view = StatusItemView.create(statusItem: statusItem,statusMenu: statusMenu)
         statusItem.view = view
         setupData()
-        setupProxyList()
+        updateProxyList()
         
     }
     
@@ -94,12 +95,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }).disposed(by: disposeBag)
     }
     
-    func setupProxyList() {
+    func updateProxyList() {
         ProxyMenuItemFactory.menuItems { [unowned self] (menus) in
-            let index = self.statusMenu.items.index(of: self.separatorLineTop)! + 1
+            let startIndex = self.statusMenu.items.index(of: self.separatorLineTop)! + 1
+            let endIndex = self.statusMenu.items.index(of: self.sepatatorLineEndProxySelect)! + 1
             var items = self.statusMenu.items
+
+            for idx in startIndex+1 ..< endIndex {
+                items.remove(at: idx)
+            }
             for each in menus {
-                items.insert(each, at: index)
+                items.insert(each, at: startIndex)
             }
             self.statusMenu.removeAllItems()
             for each in items.reversed() {
@@ -124,6 +130,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             if ConfigManager.shared.proxyPortAutoSet {
                 _ = ProxyConfigManager.setUpSystemProxy(port: config.port,socksPort: config.socketPort)
+                self.updateProxyList()
                 completeHandler?()
             }
         }

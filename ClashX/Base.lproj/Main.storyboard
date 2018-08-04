@@ -23,6 +23,7 @@
                         <outlet property="proxyModeRuleMenuItem" destination="89n-bD-JHk" id="lT1-J1-X3k"/>
                         <outlet property="proxySettingMenuItem" destination="8se-yr-wmp" id="yvm-QP-yoA"/>
                         <outlet property="separatorLineTop" destination="1fM-p6-bHd" id="NFb-qS-TKR"/>
+                        <outlet property="sepatatorLineEndProxySelect" destination="n67-fU-hLx" id="Vgv-N6-SOH"/>
                         <outlet property="statusMenu" destination="Afa-lD-EbR" id="cov-E9-WrO"/>
                     </connections>
                 </customObject>
@@ -53,6 +54,8 @@
                                 </items>
                             </menu>
                         </menuItem>
+                        <menuItem isSeparatorItem="YES" id="1fM-p6-bHd"/>
+                        <menuItem isSeparatorItem="YES" id="n67-fU-hLx"/>
                         <menuItem title="Set as system proxy" id="8se-yr-wmp">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
@@ -65,14 +68,13 @@
                                 <action selector="actionCopyExportCommand:" target="Voe-Tx-rLC" id="82r-sY-7xb"/>
                             </connections>
                         </menuItem>
-                        <menuItem isSeparatorItem="YES" id="1fM-p6-bHd"/>
-                        <menuItem isSeparatorItem="YES" id="n67-fU-hLx"/>
                         <menuItem title="Start at login" id="B1J-XB-BiZ">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="actionStartAtLogin:" target="Voe-Tx-rLC" id="aie-1F-HjZ"/>
                             </connections>
                         </menuItem>
+                        <menuItem isSeparatorItem="YES" id="UpD-DI-Smv"/>
                         <menuItem title="Config" id="JMV-Dy-CI0">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Config" id="tck-zU-JKQ">
@@ -105,7 +107,7 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Help" id="ogW-pn-jeR">
                                 <items>
-                                    <menuItem title="check update" id="p0T-J8-Emx">
+                                    <menuItem title="Check update" id="p0T-J8-Emx">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="checkForUpdates:" target="fth-rt-saN" id="gaF-35-d7h"/>

@@ -20,7 +20,7 @@ class ProxyMenuItemFactory {
                 let menu = NSMenuItem(title: proxyGroup.key, action: nil, keyEquivalent: "")
                 let selectedName = proxyGroup.value["now"].stringValue
                 let submenu = NSMenu(title: proxyGroup.key)
-                for proxy in proxyGroup.value["all"].arrayValue {
+                for proxy in proxyGroup.value["all"].arrayValue.reversed() {
                     let proxyItem = NSMenuItem(title: proxy.stringValue, action: #selector(ProxyMenuItemFactory.actionSelectProxy(sender:)), keyEquivalent: "")
                     proxyItem.target = ProxyMenuItemFactory.self
                     proxyItem.state = proxy.stringValue == selectedName ? .on : .off
@@ -29,7 +29,7 @@ class ProxyMenuItemFactory {
                 menu.submenu = submenu
                 menuItems.append(menu);
             }
-            completionHandler(menuItems)
+            completionHandler(menuItems.reversed())
         }
     }
     
