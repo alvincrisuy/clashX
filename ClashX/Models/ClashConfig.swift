@@ -7,12 +7,18 @@
 //
 import Foundation
 
+enum ClashProxyMode: String,Codable {
+    case rule = "Rule"
+    case global = "Global"
+    case direct = "Direct"
+}
+
 class ClashConfig:Codable {
-    let port:Int
-    let socketPort:Int
-    let allowLan:Bool
-    let mode:String
-    let logLevel:String
+    var port:Int
+    var socketPort:Int
+    var allowLan:Bool
+    var mode:ClashProxyMode
+    var logLevel:String
     
     private enum CodingKeys : String, CodingKey {
         case port, socketPort = "socket-port", allowLan = "allow-lan", mode, logLevel = "log-level"
@@ -22,5 +28,11 @@ class ClashConfig:Codable {
         let decoder = JSONDecoder()
         let model = try? decoder.decode(ClashConfig.self, from: data)
         return model!
+    }
+    
+    func copy() -> ClashConfig? {
+        guard let data = try? JSONEncoder().encode(self) else {return nil}
+        let copy = try? JSONDecoder().decode(ClashConfig.self, from: data)
+        return copy
     }
 }

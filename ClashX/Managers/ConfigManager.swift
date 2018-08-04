@@ -8,14 +8,24 @@
 
 import Foundation
 import Cocoa
+import RxSwift
 
 class ConfigManager {
     
-    private static let instance = ConfigManager()
-    private var _httpProxyPort = 0
-    private var _socksProxyPort = 0
+    static let shared = ConfigManager()
     
-    static var proxyPortAutoSet:Bool {
+    var currentConfig:ClashConfig?{
+        get {
+            return currentConfigVariable.value
+        }
+        
+        set {
+            currentConfigVariable.value = newValue
+        }
+    }
+    var currentConfigVariable = Variable<ClashConfig?>(nil)
+    
+    var proxyPortAutoSet:Bool {
         get{
             return UserDefaults.standard.bool(forKey: "proxyPortAutoSet")
         }
@@ -23,24 +33,7 @@ class ConfigManager {
             UserDefaults.standard.set(newValue, forKey: "proxyPortAutoSet")
         }
     }
-    
-    static var httpProxyPort:Int {
-        get{
-            return instance._httpProxyPort
-        }
-        set {
-            instance._httpProxyPort = newValue
-        }
-    }
-    
-    static var socksProxyPort:Int {
-        get{
-            return instance._socksProxyPort
-        }
-        set {
-            instance._socksProxyPort = newValue
-        }
-    }
+    let proxyPortAutoSetObservable = UserDefaults.standard.rx.observe(Bool.self, "proxyPortAutoSet")
     
     static var apiUrl:String{
         get {
@@ -48,5 +41,4 @@ class ConfigManager {
         }
     }
     
-//    func reloadClashConfig
 }

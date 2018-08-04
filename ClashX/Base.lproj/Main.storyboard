@@ -18,53 +18,82 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ClashX" customModuleProvider="target">
                     <connections>
                         <outlet property="autoStartMenuItem" destination="B1J-XB-BiZ" id="xaS-h5-qd0"/>
+                        <outlet property="proxyModeDirectMenuItem" destination="Np6-Pm-Lo3" id="DER-K7-DNW"/>
+                        <outlet property="proxyModeGlobalMenuItem" destination="yiM-U4-MNg" id="M7s-kl-aPh"/>
+                        <outlet property="proxyModeRuleMenuItem" destination="89n-bD-JHk" id="lT1-J1-X3k"/>
                         <outlet property="proxySettingMenuItem" destination="8se-yr-wmp" id="yvm-QP-yoA"/>
                         <outlet property="statusMenu" destination="Afa-lD-EbR" id="cov-E9-WrO"/>
                     </connections>
                 </customObject>
                 <menu id="Afa-lD-EbR">
                     <items>
-                        <menuItem title="set as system proxy" id="8se-yr-wmp">
+                        <menuItem title="Proxy mode" id="jGT-1M-xJu">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="Proxy mode" id="UU2-uE-YB4">
+                                <items>
+                                    <menuItem title="Global" id="yiM-U4-MNg">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="actionSwitchProxyMode:" target="Voe-Tx-rLC" id="qv6-up-ubF"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="Rule" id="89n-bD-JHk">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="actionSwitchProxyMode:" target="Voe-Tx-rLC" id="hGb-uh-9p3"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="Direct" id="Np6-Pm-Lo3">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="actionSwitchProxyMode:" target="Voe-Tx-rLC" id="vbj-a5-5O0"/>
+                                        </connections>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </menuItem>
+                        <menuItem title="Set as system proxy" id="8se-yr-wmp">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="actionSetSystemProxy:" target="Voe-Tx-rLC" id="jrp-iz-ljC"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="start at login" id="B1J-XB-BiZ">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="actionStartAtLogin:" target="Voe-Tx-rLC" id="aie-1F-HjZ"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="copy export command" id="Jmb-PK-rMW">
+                        <menuItem title="Copy export command" id="Jmb-PK-rMW">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="actionCopyExportCommand:" target="Voe-Tx-rLC" id="82r-sY-7xb"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="1fM-p6-bHd"/>
+                        <menuItem title="Start at login" id="B1J-XB-BiZ">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="actionStartAtLogin:" target="Voe-Tx-rLC" id="aie-1F-HjZ"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Config" id="JMV-Dy-CI0">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Config" id="tck-zU-JKQ">
                                 <items>
-                                    <menuItem title="generate config" id="5Ab-VJ-iIm">
+                                    <menuItem title="Generate config" id="5Ab-VJ-iIm">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="actionGenConfig:" target="Voe-Tx-rLC" id="SBd-vV-e1R"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="edit config" id="DwE-WX-ETZ">
+                                    <menuItem title="Edit config" id="DwE-WX-ETZ">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="openConfigFolder:" target="Voe-Tx-rLC" id="6Ke-Bi-AAZ"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="reload config" id="q3G-VH-eyy">
+                                    <menuItem title="Reload config" id="q3G-VH-eyy">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="actionUpdateConfig:" target="Voe-Tx-rLC" id="oW5-Ll-SY8"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="import config" id="GRE-Ra-Pkx">
+                                    <menuItem title="Import config" id="GRE-Ra-Pkx">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                 </items>
@@ -83,7 +112,7 @@
                                 </items>
                             </menu>
                         </menuItem>
-                        <menuItem title="quit" id="NXU-86-Eem">
+                        <menuItem title="Quit" id="NXU-86-Eem">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="actionQuit:" target="Voe-Tx-rLC" id="ZtA-Bb-6xk"/>

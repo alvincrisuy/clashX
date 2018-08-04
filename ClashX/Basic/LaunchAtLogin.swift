@@ -8,20 +8,31 @@
 
 import Foundation
 import ServiceManagement
+import RxSwift
 
-public struct LaunchAtLogin {
+
+
+public class LaunchAtLogin {
     private static let id = "com.west2online.ClashX.LaunchHelper"
     
-    public static var isEnabled: Bool {
+    static let shared = LaunchAtLogin()
+
+    private init() {
+        self.isEnableVirable.value = self.isEnabled
+    }
+    
+    public var isEnabled: Bool {
         get {
             guard let jobs = (SMCopyAllJobDictionaries(kSMDomainUserLaunchd).takeRetainedValue() as? [[String: AnyObject]]) else {
                 return false
             }
-            let job = jobs.first { $0["Label"] as! String == id }
+            let job = jobs.first { $0["Label"] as! String == LaunchAtLogin.id }
             return job?["OnDemand"] as? Bool ?? false
         }
         set {
-            SMLoginItemSetEnabled(id as CFString, newValue)
+            SMLoginItemSetEnabled(LaunchAtLogin.id as CFString, newValue)
         }
     }
+    
+    var isEnableVirable = Variable<Bool>(false)
 }
