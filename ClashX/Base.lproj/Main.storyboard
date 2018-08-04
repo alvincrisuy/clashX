@@ -24,6 +24,7 @@
                         <outlet property="proxySettingMenuItem" destination="8se-yr-wmp" id="yvm-QP-yoA"/>
                         <outlet property="separatorLineTop" destination="1fM-p6-bHd" id="NFb-qS-TKR"/>
                         <outlet property="sepatatorLineEndProxySelect" destination="n67-fU-hLx" id="Vgv-N6-SOH"/>
+                        <outlet property="showNetSpeedIndicatorMenuItem" destination="YIO-Vj-64f" id="9a5-3N-Ylk"/>
                         <outlet property="statusMenu" destination="Afa-lD-EbR" id="cov-E9-WrO"/>
                     </connections>
                 </customObject>
@@ -72,6 +73,12 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="actionStartAtLogin:" target="Voe-Tx-rLC" id="aie-1F-HjZ"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Show network indicator" id="YIO-Vj-64f">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="actionShowNetSpeedIndicator:" target="Voe-Tx-rLC" id="iHm-b9-VSa"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="UpD-DI-Smv"/>

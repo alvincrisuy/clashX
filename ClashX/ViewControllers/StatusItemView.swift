@@ -14,9 +14,10 @@ class StatusItemView: NSView {
     
     @IBOutlet var uploadSpeedLabel: NSTextField!
     @IBOutlet var downloadSpeedLabel: NSTextField!
+    @IBOutlet weak var speedContainerView: NSView!
     weak var statusItem:NSStatusItem?
     
-    static func create(statusItem:NSStatusItem,statusMenu:NSMenu)->StatusItemView{
+    static func create(statusItem:NSStatusItem?,statusMenu:NSMenu)->StatusItemView{
         var topLevelObjects : NSArray?
         if Bundle.main.loadNibNamed(NSNib.Name(rawValue: "StatusItemView"), owner: self, topLevelObjects: &topLevelObjects) {
             let view = (topLevelObjects!.first(where: { $0 is NSView }) as? StatusItemView)!
@@ -49,6 +50,10 @@ class StatusItemView: NSView {
             self.uploadSpeedLabel.stringValue = finalUpStr
         }
    
+    }
+    
+    func showSpeedContainer(show:Bool) {
+        self.speedContainerView.isHidden = !show
     }
     
     override func mouseDown(with event: NSEvent) {

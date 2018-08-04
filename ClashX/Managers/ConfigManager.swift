@@ -35,6 +35,16 @@ class ConfigManager {
     }
     let proxyPortAutoSetObservable = UserDefaults.standard.rx.observe(Bool.self, "proxyPortAutoSet")
     
+    var showNetSpeedIndicator:Bool {
+        get{
+            return UserDefaults.standard.bool(forKey: "showNetSpeedIndicator")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "showNetSpeedIndicator")
+        }
+    }
+    let showNetSpeedIndicatorObservable = UserDefaults.standard.rx.observe(Bool.self, "showNetSpeedIndicator")
+    
     static var apiUrl:String{
         get {
             return "http://127.0.0.1:8080"

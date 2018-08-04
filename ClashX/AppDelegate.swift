@@ -15,7 +15,6 @@ import RxSwift
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem!
-    static let StatusItemIconWidth: CGFloat = NSStatusItem.variableLength * 2
 
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var proxySettingMenuItem: NSMenuItem!
@@ -25,12 +24,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var proxyModeDirectMenuItem: NSMenuItem!
     @IBOutlet weak var proxyModeRuleMenuItem: NSMenuItem!
     
+    @IBOutlet weak var showNetSpeedIndicatorMenuItem: NSMenuItem!
     @IBOutlet weak var separatorLineTop: NSMenuItem!
     @IBOutlet weak var sepatatorLineEndProxySelect: NSMenuItem!
     
     var disposeBag = DisposeBag()
     let ssQueue = DispatchQueue(label: "com.w2fzu.ssqueue", attributes: .concurrent)
-
+    var statusItemView:StatusItemView!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         signal(SIGPIPE, SIG_IGN)
@@ -38,10 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ = ProxyConfigManager.install()
         PFMoveToApplicationsFolderIfNecessary()
         self.startProxy()
-
-        statusItem = NSStatusBar.system.statusItem(withLength: 57)
-        let view = StatusItemView.create(statusItem: statusItem,statusMenu: statusMenu)
-        statusItem.view = view
+        statusItemView = StatusItemView.create(statusItem: nil,statusMenu: statusMenu)
         setupData()
         
     }
@@ -61,7 +58,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             }.disposed(by: disposeBag)
         
-        ConfigManager.shared.proxyPortAutoSetObservable
+        
+        ConfigManager.shared
+            .showNetSpeedIndicatorObservable
+            .bind {[unowned self] (show) in
+                self.showNetSpeedIndicatorMenuItem.state = (show!) ? .on : .off
+                self.statusItem = NSStatusBar.system.statusItem(withLength: show! ? 57 : 22)
+                self.statusItem.view = self.statusItemView
+                self.statusItemView.showSpeedContainer(show: show!)
+                self.statusItemView.statusItem = self.statusItem
+            }.disposed(by: disposeBag)
+        
+        ConfigManager.shared
+            .proxyPortAutoSetObservable
             .distinctUntilChanged()
             .bind{ [unowned self]
                 enable in
@@ -72,7 +81,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 ((self.statusItem.view) as! StatusItemView).imageView.image = image
             }.disposed(by: disposeBag)
         
-        ConfigManager.shared.currentConfigVariable
+        ConfigManager.shared
+            .currentConfigVariable
             .asObservable()
             .filter{$0 != nil}
             .bind {[unowned self] (config) in
@@ -89,11 +99,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.updateProxyList()
         }.disposed(by: disposeBag)
         
-        LaunchAtLogin.shared.isEnableVirable
+        LaunchAtLogin.shared
+            .isEnableVirable
             .asObservable()
             .subscribe(onNext: { (enable) in
                 self.autoStartMenuItem.state = enable ? .on : .off
             }).disposed(by: disposeBag)
+        
+  
     }
     
     func updateProxyList() {
@@ -223,6 +236,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
+    @IBAction func actionShowNetSpeedIndicator(_ sender: NSMenuItem) {
+        ConfigManager.shared.showNetSpeedIndicator = !ConfigManager.shared.showNetSpeedIndicator
+    }
 }
 
 

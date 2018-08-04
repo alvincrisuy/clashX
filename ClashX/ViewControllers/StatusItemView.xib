@@ -63,6 +63,7 @@
             <connections>
                 <outlet property="downloadSpeedLabel" destination="Hlw-Vg-wLD" id="Cji-Uh-tet"/>
                 <outlet property="imageView" destination="7SZ-08-T0A" id="q3S-JL-4mH"/>
+                <outlet property="speedContainerView" destination="x4I-nn-92U" id="qlv-Jp-oB5"/>
                 <outlet property="uploadSpeedLabel" destination="srp-1R-o7n" id="s4y-hX-VbP"/>
             </connections>
             <point key="canvasLocation" x="25.5" y="98.5"/>
