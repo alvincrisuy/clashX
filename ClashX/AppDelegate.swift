@@ -24,6 +24,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var proxyModeGlobalMenuItem: NSMenuItem!    
     @IBOutlet weak var proxyModeDirectMenuItem: NSMenuItem!
     @IBOutlet weak var proxyModeRuleMenuItem: NSMenuItem!
+    
+    @IBOutlet weak var separatorLineTop: NSMenuItem!
+    
     var disposeBag = DisposeBag()
     let ssQueue = DispatchQueue(label: "com.w2fzu.ssqueue", attributes: .concurrent)
 
@@ -39,6 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let view = StatusItemView.create(statusItem: statusItem,statusMenu: statusMenu)
         statusItem.view = view
         setupData()
+        setupProxyList()
         
     }
     
@@ -88,6 +92,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .subscribe(onNext: { (enable) in
                 self.autoStartMenuItem.state = enable ? .on : .off
             }).disposed(by: disposeBag)
+    }
+    
+    func setupProxyList() {
+        ProxyMenuItemFactory.menuItems { [unowned self] (menus) in
+            let index = self.statusMenu.items.index(of: self.separatorLineTop)! + 1
+            var items = self.statusMenu.items
+            for each in menus {
+                items.insert(each, at: index)
+            }
+            self.statusMenu.removeAllItems()
+            for each in items.reversed() {
+                self.statusMenu.insertItem(each, at: 0)
+            }
+        }
     }
     
     func startProxy() {

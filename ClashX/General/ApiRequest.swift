@@ -64,4 +64,23 @@ class ApiRequest{
             }
         }
     }
+    
+    static func requestProxyGroupList(completeHandler:@escaping (([String:[String:Any]])->())){
+        request(ConfigManager.apiUrl + "/proxies", method: .get).responseJSON{
+            res in
+            guard let data = res.result.value as? [String:[String:[String:Any]]] else {return}
+            completeHandler(data["proxies"]!)
+        }
+    }
+    
+    static func updateProxyGroup(group:String,selectProxy:String,callback:@escaping ((Bool)->())) {
+        request(ConfigManager.apiUrl + "/proxies/\(group)", method: .put, parameters: ["name":selectProxy], encoding: JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+            case .success(_):
+                callback(true)
+            case .failure(_):
+                callback(false)
+            }
+        }
+    }
 }

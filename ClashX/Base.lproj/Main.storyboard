@@ -22,6 +22,7 @@
                         <outlet property="proxyModeGlobalMenuItem" destination="yiM-U4-MNg" id="M7s-kl-aPh"/>
                         <outlet property="proxyModeRuleMenuItem" destination="89n-bD-JHk" id="lT1-J1-X3k"/>
                         <outlet property="proxySettingMenuItem" destination="8se-yr-wmp" id="yvm-QP-yoA"/>
+                        <outlet property="separatorLineTop" destination="1fM-p6-bHd" id="NFb-qS-TKR"/>
                         <outlet property="statusMenu" destination="Afa-lD-EbR" id="cov-E9-WrO"/>
                     </connections>
                 </customObject>
@@ -65,6 +66,7 @@
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="1fM-p6-bHd"/>
+                        <menuItem isSeparatorItem="YES" id="n67-fU-hLx"/>
                         <menuItem title="Start at login" id="B1J-XB-BiZ">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
