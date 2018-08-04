@@ -12,6 +12,10 @@ import Alamofire
 
 
 class ApiRequest{
+    static let shared = ApiRequest()
+    
+    var trafficReq:DataRequest? = nil
+    
     static func requestConfig(completeHandler:@escaping ((ClashConfig)->())){
         request(ConfigManager.apiUrl + "/configs", method: .get).responseData{
             res in
@@ -21,8 +25,11 @@ class ApiRequest{
         }
     }
     
-    static func requestTrafficInfo(callback:@escaping ((Int,Int)->()) ){
-        request(ConfigManager.apiUrl + "/traffic").stream {(data) in
+    func requestTrafficInfo(callback:@escaping ((Int,Int)->()) ){
+        self.trafficReq?.cancel()
+        
+        self.trafficReq =
+            request(ConfigManager.apiUrl + "/traffic").stream {(data) in
             if let jsonData = try? JSONSerialization.jsonObject(with: data) as? [String:Int] {
                 callback(jsonData!["up"] ?? 0, jsonData!["down"] ?? 0)
             }

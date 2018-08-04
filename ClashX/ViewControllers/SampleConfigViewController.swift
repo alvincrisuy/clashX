@@ -93,9 +93,7 @@ class SampleConfigViewController: NSViewController {
         if (vaildConfig()) {
             generateConfig()
             self.view.window?.windowController?.close()
-            DispatchQueue(label: "com.w2fzu.ssqueue", attributes: .concurrent).async {
-//                updateConfigC()
-            }
+            NotificationCenter.default.post(Notification(name:kShouldUpDateConfig))
         } else {
             shakeWindows()
         }

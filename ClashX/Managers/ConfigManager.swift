@@ -12,8 +12,8 @@ import Cocoa
 class ConfigManager {
     
     private static let instance = ConfigManager()
-    var _httpProxyPort = 0
-    var _socksProxyPort = 0
+    private var _httpProxyPort = 0
+    private var _socksProxyPort = 0
     
     static var proxyPortAutoSet:Bool {
         get{
@@ -47,4 +47,6 @@ class ConfigManager {
             return "http://127.0.0.1:8080"
         }
     }
+    
+//    func reloadClashConfig
 }

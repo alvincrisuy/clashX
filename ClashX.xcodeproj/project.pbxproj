@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D318CDAC9464E01DAD1F92B /* Pods_ClashX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0358BF8F0CBD7FF9A7EA4E30 /* Pods_ClashX.framework */; };
+		4913C82321157D0200F6B87C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913C82221157D0200F6B87C /* Notification.swift */; };
 		492C4865210EC9E4004554A0 /* ProxyConfig in Resources */ = {isa = PBXBuildFile; fileRef = 492C4864210EC9E4004554A0 /* ProxyConfig */; };
 		492C4869210EE6B9004554A0 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C4868210EE6B9004554A0 /* ApiRequest.swift */; };
 		492C4871210EF62E004554A0 /* ClashConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C4870210EF62E004554A0 /* ClashConfig.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		0358BF8F0CBD7FF9A7EA4E30 /* Pods_ClashX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClashX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4913C82221157D0200F6B87C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		492C4864210EC9E4004554A0 /* ProxyConfig */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ProxyConfig; path = "../../../../Library/Developer/Xcode/DerivedData/ClashX-dojkemepirlxgtgjgkqxpjrbgopn/Build/Products/Debug/ProxyConfig"; sourceTree = "<group>"; };
 		492C4868210EE6B9004554A0 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		492C4870210EF62E004554A0 /* ClashConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashConfig.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4913C82021157CEB00F6B87C /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				4913C82221157D0200F6B87C /* Notification.swift */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
 		492C4866210EE69B004554A0 /* General */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +207,7 @@
 		49CF3B1F20CD7463001EBF94 /* ClashX */ = {
 			isa = PBXGroup;
 			children = (
+				4913C82021157CEB00F6B87C /* Macro */,
 				492C486E210EF621004554A0 /* Models */,
 				492C4866210EE69B004554A0 /* General */,
 				4997732220D251A60009B136 /* Basic */,
@@ -509,6 +520,7 @@
 				495340B320DE68C300B0D3FF /* StatusItemView.swift in Sources */,
 				495A44D320D267D000888A0A /* LaunchAtLogin.swift in Sources */,
 				49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */,
+				4913C82321157D0200F6B87C /* Notification.swift in Sources */,
 				492C4871210EF62E004554A0 /* ClashConfig.swift in Sources */,
 				492C4869210EE6B9004554A0 /* ApiRequest.swift in Sources */,
 				49CF3B6520CEE06C001EBF94 /* ConfigManager.swift in Sources */,

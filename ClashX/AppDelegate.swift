@@ -9,6 +9,8 @@
 import Cocoa
 import LetsMove
 import Alamofire
+import RxCocoa
+import RxSwift
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -18,6 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var proxySettingMenuItem: NSMenuItem!
     @IBOutlet weak var autoStartMenuItem: NSMenuItem!
+    var disposeBag = DisposeBag()
     
     let ssQueue = DispatchQueue(label: "com.w2fzu.ssqueue", attributes: .concurrent)
 
@@ -57,11 +60,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ssQueue.async {
             run()
         }
+        syncConfigAndStartTrafficMonitor()
+    }
+    
+    func syncConfigAndStartTrafficMonitor(){
         ApiRequest.requestConfig{ (config) in
-            print(config.port)
+            guard config.port > 0 else {return}
             ConfigManager.httpProxyPort = config.port
             ConfigManager.socksProxyPort = config.socketPort
-
+            
             if ConfigManager.proxyPortAutoSet {
                 _ = ProxyConfigManager.setUpSystemProxy(port: ConfigManager.httpProxyPort,socksPort: ConfigManager.socksProxyPort)
             }
@@ -69,20 +76,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func startTrafficMonitor(){
-        ApiRequest.requestTrafficInfo(){ [weak self] up,down in
+    func startTrafficMonitor() {
+        ApiRequest.shared.requestTrafficInfo(){ [weak self] up,down in
             guard let `self` = self else {return}
             ((self.statusItem.view) as! StatusItemView).updateSpeedLabel(up: up, down: down)
         }
     }
     
+    func registerNotification() {
+        NotificationCenter.default.rx.notification(kShouldUpDateConfig).bind {
+            [weak self] (note)  in
+            guard let `self` = self else {return}
+            self.syncConfigAndStartTrafficMonitor()
+        }.disposed(by: disposeBag)
+    }
+    
+//Actions:
     
     @IBAction func actionQuit(_ sender: Any) {
         NSApplication.shared.terminate(self)
     }
-    
-
-    
+        
     @IBAction func actionSetSystemProxy(_ sender: Any) {
         ConfigManager.proxyPortAutoSet = !ConfigManager.proxyPortAutoSet
         updateMenuItem()
@@ -126,6 +140,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func actionUpdateConfig(_ sender: Any) {
         ApiRequest.requestConfigUpdate() { [weak self] success in
             guard let strongSelf = self else {return}
+            strongSelf.syncConfigAndStartTrafficMonitor()
         }
     }
 }
