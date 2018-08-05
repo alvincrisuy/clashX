@@ -39,6 +39,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         PFMoveToApplicationsFolderIfNecessary()
         self.startProxy()
         statusItemView = StatusItemView.create(statusItem: nil,statusMenu: statusMenu)
+        statusItemView.onPopUpMenuAction = {
+            [weak self] in
+            guard let `self` = self else {return}
+            self.updateProxyList()
+        }
         setupData()
         
     }
@@ -112,12 +117,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateProxyList() {
         ProxyMenuItemFactory.menuItems { [unowned self] (menus) in
             let startIndex = self.statusMenu.items.index(of: self.separatorLineTop)! + 1
-            let endIndex = self.statusMenu.items.index(of: self.sepatatorLineEndProxySelect)!
+            let endIndex = self.statusMenu.items.index(of: self.sepatatorLineEndProxySelect)! - 1
             var items = self.statusMenu.items
 
-            for idx in startIndex ..< endIndex {
-                items.remove(at: idx)
-            }
+            items.removeSubrange(ClosedRange(uncheckedBounds: (lower: startIndex, upper: endIndex)))
+            
             for each in menus {
                 items.insert(each, at: startIndex)
             }

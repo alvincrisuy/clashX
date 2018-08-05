@@ -17,6 +17,8 @@ class StatusItemView: NSView {
     @IBOutlet weak var speedContainerView: NSView!
     weak var statusItem:NSStatusItem?
     
+    var onPopUpMenuAction:(()->())? = nil
+    
     static func create(statusItem:NSStatusItem?,statusMenu:NSMenu)->StatusItemView{
         var topLevelObjects : NSArray?
         if Bundle.main.loadNibNamed(NSNib.Name(rawValue: "StatusItemView"), owner: self, topLevelObjects: &topLevelObjects) {
@@ -57,6 +59,7 @@ class StatusItemView: NSView {
     }
     
     override func mouseDown(with event: NSEvent) {
+        onPopUpMenuAction?()
         statusItem?.popUpMenu(self.menu!)
     }
 }

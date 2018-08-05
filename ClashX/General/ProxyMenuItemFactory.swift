@@ -21,28 +21,49 @@ class ProxyMenuItemFactory {
             }
             
             for proxyGroup in dataDict.dictionaryValue {
-                guard proxyGroup.value["type"].stringValue == "Selector" else {continue}
-                
-                if (ConfigManager.shared.currentConfig?.mode == .global) {
-                    if proxyGroup.key != "GLOBAL" {continue}
-                } else {
-                    if proxyGroup.key == "GLOBAL" {continue}
+                var menu:NSMenuItem?
+                switch proxyGroup.value["type"].stringValue {
+                case "Selector": menu = self.generateSelectorMenuItem(proxyGroup: proxyGroup)
+                case "URLTest": menu = self.generateUrlTestMenuItem(proxyGroup: proxyGroup)
+                default: continue
                 }
+                if (menu != nil) {menuItems.append(menu!)}
                 
-                let menu = NSMenuItem(title: proxyGroup.key, action: nil, keyEquivalent: "")
-                let selectedName = proxyGroup.value["now"].stringValue
-                let submenu = NSMenu(title: proxyGroup.key)
-                for proxy in proxyGroup.value["all"].arrayValue.reversed() {
-                    let proxyItem = NSMenuItem(title: proxy.stringValue, action: #selector(ProxyMenuItemFactory.actionSelectProxy(sender:)), keyEquivalent: "")
-                    proxyItem.target = ProxyMenuItemFactory.self
-                    proxyItem.state = proxy.stringValue == selectedName ? .on : .off
-                    submenu.addItem(proxyItem)
-                }
-                menu.submenu = submenu
-                menuItems.append(menu);
             }
             completionHandler(menuItems.reversed())
         }
+    }
+    
+    static func generateSelectorMenuItem(proxyGroup:(key: String, value: JSON))->NSMenuItem? {
+        if (ConfigManager.shared.currentConfig?.mode == .global) {
+            if proxyGroup.key != "GLOBAL" {return nil}
+        } else {
+            if proxyGroup.key == "GLOBAL" {return nil}
+        }
+        
+        let menu = NSMenuItem(title: proxyGroup.key, action: nil, keyEquivalent: "")
+        let selectedName = proxyGroup.value["now"].stringValue
+        let submenu = NSMenu(title: proxyGroup.key)
+        for proxy in proxyGroup.value["all"].arrayValue.reversed() {
+            let proxyItem = NSMenuItem(title: proxy.stringValue, action: #selector(ProxyMenuItemFactory.actionSelectProxy(sender:)), keyEquivalent: "")
+            proxyItem.target = ProxyMenuItemFactory.self
+            proxyItem.state = proxy.stringValue == selectedName ? .on : .off
+            submenu.addItem(proxyItem)
+        }
+        menu.submenu = submenu
+        return menu
+    }
+    
+    static func generateUrlTestMenuItem(proxyGroup:(key: String, value: JSON))->NSMenuItem? {
+        
+        let menu = NSMenuItem(title: proxyGroup.key, action: nil, keyEquivalent: "")
+        let selectedName = proxyGroup.value["now"].stringValue
+        let submenu = NSMenu(title: proxyGroup.key)
+
+        let nowMenuItem = NSMenuItem(title: "now:\(selectedName)", action: nil, keyEquivalent: "")
+        submenu.addItem(nowMenuItem)
+        menu.submenu = submenu
+        return menu
     }
     
     @objc static func actionSelectProxy(sender:NSMenuItem){
