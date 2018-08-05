@@ -92,7 +92,7 @@
                                             <action selector="actionGenConfig:" target="Voe-Tx-rLC" id="SBd-vV-e1R"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Edit config" id="DwE-WX-ETZ">
+                                    <menuItem title="Edit config Manually" id="DwE-WX-ETZ">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="openConfigFolder:" target="Voe-Tx-rLC" id="6Ke-Bi-AAZ"/>

@@ -63,5 +63,11 @@ class ProxyServerModel: NSObject, Codable {
         return true
     }
     
+    override func copy() -> Any {
+        guard let data = try? JSONEncoder().encode(self) else {return ProxyServerModel()}
+        let copy = try? JSONDecoder().decode(ProxyServerModel.self, from: data)
+        return copy ?? ProxyServerModel()
+    }
+    
 
 }

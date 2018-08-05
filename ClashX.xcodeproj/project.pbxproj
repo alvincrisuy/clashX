@@ -16,6 +16,7 @@
 		4952C3CB2116E952004A4FA8 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952C3C82116E952004A4FA8 /* PreferencesWindowController.swift */; };
 		4952C3CC2116E952004A4FA8 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4952C3CA2116E952004A4FA8 /* PreferencesWindowController.xib */; };
 		4952C3CE2116EA2E004A4FA8 /* ProxyServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952C3CD2116EA2E004A4FA8 /* ProxyServerModel.swift */; };
+		4952C3D02117027C004A4FA8 /* ConfigFileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952C3CF2117027C004A4FA8 /* ConfigFileFactory.swift */; };
 		495340B020DE5F7200B0D3FF /* StatusItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 495340AF20DE5F7200B0D3FF /* StatusItemView.xib */; };
 		495340B320DE68C300B0D3FF /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495340B220DE68C300B0D3FF /* StatusItemView.swift */; };
 		495A44BF20D2660A00888A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A44BE20D2660A00888A0A /* AppDelegate.swift */; };
@@ -81,6 +82,7 @@
 		4952C3C82116E952004A4FA8 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		4952C3CA2116E952004A4FA8 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		4952C3CD2116EA2E004A4FA8 /* ProxyServerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyServerModel.swift; sourceTree = "<group>"; };
+		4952C3CF2117027C004A4FA8 /* ConfigFileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigFileFactory.swift; sourceTree = "<group>"; };
 		495340AF20DE5F7200B0D3FF /* StatusItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusItemView.xib; sourceTree = "<group>"; };
 		495340B220DE68C300B0D3FF /* StatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
 		495A44BC20D2660A00888A0A /* ClashXLaunchHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClashXLaunchHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 			children = (
 				492C4868210EE6B9004554A0 /* ApiRequest.swift */,
 				4952C3BE2115C7CA004A4FA8 /* ProxyMenuItemFactory.swift */,
+				4952C3CF2117027C004A4FA8 /* ConfigFileFactory.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 			files = (
 				4989F98B20D0AD800001E564 /* SampleConfigViewController.swift in Sources */,
 				49CF3B5C20CE8068001EBF94 /* ProxyConfigManager.swift in Sources */,
+				4952C3D02117027C004A4FA8 /* ConfigFileFactory.swift in Sources */,
 				4997732520D251A60009B136 /* SWBApplication.m in Sources */,
 				495340B320DE68C300B0D3FF /* StatusItemView.swift in Sources */,
 				495A44D320D267D000888A0A /* LaunchAtLogin.swift in Sources */,

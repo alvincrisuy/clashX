@@ -90,8 +90,14 @@ class PreferencesWindowController: NSWindowController
             return
         }
         profilesTableView.beginUpdates()
-        let profile = ProxyServerModel()
-        profile.remark = "New Server"
+        let profile:ProxyServerModel
+        if (editingConfig != nil) {
+            profile = editingConfig!.copy() as! ProxyServerModel
+            profile.remark = "\(profile.remark)Copy"
+        } else {
+            profile = ProxyServerModel()
+            profile.remark = "NewServer"
+        }
         serverConfigs.append(profile)
         
         let index = IndexSet(integer: serverConfigs.count-1)
@@ -126,6 +132,8 @@ class PreferencesWindowController: NSWindowController
             shakeWindows()
             return
         }
+        let str = ConfigFileFactory.configFile(proxies: serverConfigs)
+        ConfigFileFactory.saveToClashConfigFile(str)
         window?.performClose(nil)
 
     }
@@ -134,25 +142,6 @@ class PreferencesWindowController: NSWindowController
         window?.performClose(self)
     }
     
-    @IBAction func duplicate(_ sender: Any) {
-        var copyCount = 0
-        for (_, toDuplicateIndex) in profilesTableView.selectedRowIndexes.enumerated() {
-            print(serverConfigs.count)
-            let profile = serverConfigs[toDuplicateIndex + copyCount]
-            let duplicateProfile = profile.copy() as! ProxyServerModel
-            serverConfigs.insert(duplicateProfile, at:toDuplicateIndex + copyCount)
-            
-            profilesTableView.beginUpdates()
-            let index = IndexSet(integer: toDuplicateIndex + copyCount)
-            profilesTableView.insertRows(at: index, withAnimation: NSTableView.AnimationOptions.effectFade)
-            self.profilesTableView.scrollRowToVisible(toDuplicateIndex + copyCount)
-            self.profilesTableView.selectRowIndexes(index, byExtendingSelection: false)
-            profilesTableView.endUpdates()
-            
-            copyCount += 1
-        }
-        updateProfileBoxVisible()
-    }
     
     @IBAction func togglePasswordVisible(_ sender: Any) {
         if passwordTabView.selectedTabViewItem?.identifier as! String == "secure" {
@@ -167,7 +156,7 @@ class PreferencesWindowController: NSWindowController
  
     
     func updateProfileBoxVisible() {
-        if serverConfigs.count <= 0 {
+        if serverConfigs.count <= 1 {
             removeButton.isEnabled = false
         }else{
             removeButton.isEnabled = true
