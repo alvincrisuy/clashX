@@ -104,8 +104,11 @@
                                             <action selector="actionUpdateConfig:" target="Voe-Tx-rLC" id="oW5-Ll-SY8"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Import config" id="GRE-Ra-Pkx">
+                                    <menuItem title="Import bunch json file" id="GRE-Ra-Pkx">
                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="actionImportBunchJsonFile:" target="Voe-Tx-rLC" id="wPl-iW-WvG"/>
+                                        </connections>
                                     </menuItem>
                                 </items>
                             </menu>

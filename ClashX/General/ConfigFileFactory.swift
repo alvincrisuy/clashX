@@ -6,6 +6,7 @@
 //  Copyright © 2018年 west2online. All rights reserved.
 //
 import Foundation
+import AppKit
 
 class ConfigFileFactory {
     static func configFile(proxies:[ProxyServerModel]) -> String {
@@ -42,5 +43,57 @@ class ConfigFileFactory {
             try? FileManager.default.removeItem(at: URL(fileURLWithPath: path))
         }
         try? str.write(to: URL(fileURLWithPath: path), atomically: true, encoding: .utf8)
+        NotificationCenter.default.post(Notification(name:kShouldUpDateConfig))
+    }
+    
+    
+    static func importConfigFile() {
+        let openPanel = NSOpenPanel()
+        openPanel.title = "Choose Config Json File"
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = false
+        openPanel.canCreateDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.becomeKey()
+        let result = openPanel.runModal()
+        if (result.rawValue == NSFileHandlingPanelOKButton && (openPanel.url) != nil) {
+            let fileManager = FileManager.default
+            let filePath:String = (openPanel.url?.path)!
+            var profiles = [ProxyServerModel]()
+            if (fileManager.fileExists(atPath: filePath) && filePath.hasSuffix("json")) {
+                let data = fileManager.contents(atPath: filePath)
+                let readString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
+                let readStringData = readString.data(using: String.Encoding.utf8.rawValue)
+                
+                let jsonArr1 = try! JSONSerialization.jsonObject(with: readStringData!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+
+                for item in jsonArr1.object(forKey: "configs") as! [[String: AnyObject]]{
+                    let profile = ProxyServerModel()
+                    profile.serverHost = item["server"] as! String
+                    profile.serverPort = item["server_port"] as! String
+                    profile.method = item["method"] as! String
+                    profile.password = item["password"] as! String
+                    profile.remark = item["remarks"] as! String
+                    
+                    profiles.append(profile)
+                }
+                
+                let configStr = self.configFile(proxies: profiles)
+                self.saveToClashConfigFile(str: configStr)
+                
+                let notification = NSUserNotification()
+                notification.title = "Import Server Profile succeed!"
+                notification.informativeText = "Successful import \(profiles.count) items"
+                NSUserNotificationCenter.default
+                    .deliver(notification)
+            }else{
+                let notification = NSUserNotification()
+                notification.title = "Import Server Profile failed!"
+                notification.informativeText = "Invalid config file!"
+                NSUserNotificationCenter.default
+                    .deliver(notification)
+                return
+            }
+        }
     }
 }

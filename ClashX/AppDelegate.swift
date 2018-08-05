@@ -220,6 +220,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    @IBAction func actionImportBunchJsonFile(_ sender: NSMenuItem) {
+        ConfigFileFactory.importConfigFile()
+    }
     @IBAction func actionSwitchProxyMode(_ sender: NSMenuItem) {
         let mode:ClashProxyMode
         switch sender {
