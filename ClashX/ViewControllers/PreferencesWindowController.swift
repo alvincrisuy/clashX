@@ -132,8 +132,26 @@ class PreferencesWindowController: NSWindowController
             shakeWindows()
             return
         }
+        var vaild = true
+        var remarkSet = Set<String>()
+        remarkSet.insert("Proxy")
+        remarkSet.insert("ProxyAuto")
+        for config in serverConfigs {
+            if remarkSet.contains(config.remark) || !config.isValid() {
+                vaild = false
+                break
+            } else {
+                remarkSet.insert(config.remark)
+            }
+        }
+        
+        if (!vaild) {
+            self.shakeWindows()
+            return
+        }
+        
         let str = ConfigFileFactory.configFile(proxies: serverConfigs)
-        ConfigFileFactory.saveToClashConfigFile(str)
+        ConfigFileFactory.saveToClashConfigFile(str: str)
         window?.performClose(nil)
 
     }
