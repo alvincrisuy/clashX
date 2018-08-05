@@ -13,6 +13,9 @@
 		492C4869210EE6B9004554A0 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C4868210EE6B9004554A0 /* ApiRequest.swift */; };
 		492C4871210EF62E004554A0 /* ClashConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C4870210EF62E004554A0 /* ClashConfig.swift */; };
 		4952C3BF2115C7CA004A4FA8 /* ProxyMenuItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952C3BE2115C7CA004A4FA8 /* ProxyMenuItemFactory.swift */; };
+		4952C3CB2116E952004A4FA8 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952C3C82116E952004A4FA8 /* PreferencesWindowController.swift */; };
+		4952C3CC2116E952004A4FA8 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4952C3CA2116E952004A4FA8 /* PreferencesWindowController.xib */; };
+		4952C3CE2116EA2E004A4FA8 /* ProxyServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952C3CD2116EA2E004A4FA8 /* ProxyServerModel.swift */; };
 		495340B020DE5F7200B0D3FF /* StatusItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 495340AF20DE5F7200B0D3FF /* StatusItemView.xib */; };
 		495340B320DE68C300B0D3FF /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495340B220DE68C300B0D3FF /* StatusItemView.swift */; };
 		495A44BF20D2660A00888A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A44BE20D2660A00888A0A /* AppDelegate.swift */; };
@@ -75,6 +78,9 @@
 		492C4868210EE6B9004554A0 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		492C4870210EF62E004554A0 /* ClashConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashConfig.swift; sourceTree = "<group>"; };
 		4952C3BE2115C7CA004A4FA8 /* ProxyMenuItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyMenuItemFactory.swift; sourceTree = "<group>"; };
+		4952C3C82116E952004A4FA8 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		4952C3CA2116E952004A4FA8 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
+		4952C3CD2116EA2E004A4FA8 /* ProxyServerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyServerModel.swift; sourceTree = "<group>"; };
 		495340AF20DE5F7200B0D3FF /* StatusItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusItemView.xib; sourceTree = "<group>"; };
 		495340B220DE68C300B0D3FF /* StatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
 		495A44BC20D2660A00888A0A /* ClashXLaunchHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClashXLaunchHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				492C4870210EF62E004554A0 /* ClashConfig.swift */,
+				4952C3CD2116EA2E004A4FA8 /* ProxyServerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +177,8 @@
 		4989F98520D0AA300001E564 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4952C3C82116E952004A4FA8 /* PreferencesWindowController.swift */,
+				4952C3CA2116E952004A4FA8 /* PreferencesWindowController.xib */,
 				4989F98920D0AD800001E564 /* SampleConfigViewController.swift */,
 				495340AF20DE5F7200B0D3FF /* StatusItemView.xib */,
 				495340B220DE68C300B0D3FF /* StatusItemView.swift */,
@@ -432,6 +441,7 @@
 				49CF3B5F20CE80D2001EBF94 /* install_proxy_helper.sh in Resources */,
 				49CF3B4020CD7845001EBF94 /* menu_icon_disabled@2x.png in Resources */,
 				49CF3B3F20CD7845001EBF94 /* menu_icon.png in Resources */,
+				4952C3CC2116E952004A4FA8 /* PreferencesWindowController.xib in Resources */,
 				4989F98420D02D200001E564 /* Country.mmdb in Resources */,
 				497F0DF320DE2FE50077AD41 /* Icon.icns in Resources */,
 				492C4865210EC9E4004554A0 /* ProxyConfig in Resources */,
@@ -525,11 +535,13 @@
 				495340B320DE68C300B0D3FF /* StatusItemView.swift in Sources */,
 				495A44D320D267D000888A0A /* LaunchAtLogin.swift in Sources */,
 				49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */,
+				4952C3CB2116E952004A4FA8 /* PreferencesWindowController.swift in Sources */,
 				4913C82321157D0200F6B87C /* Notification.swift in Sources */,
 				492C4871210EF62E004554A0 /* ClashConfig.swift in Sources */,
 				492C4869210EE6B9004554A0 /* ApiRequest.swift in Sources */,
 				49CF3B6520CEE06C001EBF94 /* ConfigManager.swift in Sources */,
 				4952C3BF2115C7CA004A4FA8 /* ProxyMenuItemFactory.swift in Sources */,
+				4952C3CE2116EA2E004A4FA8 /* ProxyServerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

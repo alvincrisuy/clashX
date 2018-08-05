@@ -189,8 +189,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var genConfigWindow:NSWindowController?=nil
     @IBAction func actionGenConfig(_ sender: Any) {
-        let ctrl = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
-            .instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "sampleConfigGenerator")) as! NSWindowController
+//        let ctrl = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
+//            .instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "sampleConfigGenerator")) as! NSWindowController
+        let ctrl = PreferencesWindowController(windowNibName: NSNib.Name(rawValue: "PreferencesWindowController"))
+        
         
         genConfigWindow?.close()
         genConfigWindow=ctrl
