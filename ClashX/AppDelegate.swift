@@ -120,7 +120,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let xx = x.object(forKey: "launch_fail_times") as? Int {launch_fail_times = xx }
         launch_fail_times += 1
         x.set(launch_fail_times, forKey: "launch_fail_times")
-        if launch_fail_times > 1{
+        if launch_fail_times > 3{
             //发生连续崩溃
             let path = (NSHomeDirectory() as NSString).appendingPathComponent("/.config/clash/")
             let documentDirectory = URL(fileURLWithPath: path)
@@ -159,7 +159,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             run()
         }
         syncConfig(){
-            self.resetTrafficMonitor()
+            DispatchQueue.main.asyncAfter(deadline:DispatchTime.now() + 1, execute: {
+                self.resetTrafficMonitor()
+            })
         }
     }
     
