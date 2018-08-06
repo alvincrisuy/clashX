@@ -67,10 +67,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ConfigManager.shared
             .showNetSpeedIndicatorObservable
             .bind {[unowned self] (show) in
-                self.showNetSpeedIndicatorMenuItem.state = (show!) ? .on : .off
-                self.statusItem = NSStatusBar.system.statusItem(withLength: show! ? 57 : 22)
+                self.showNetSpeedIndicatorMenuItem.state = (show ?? true) ? .on : .off
+                self.statusItem = NSStatusBar.system.statusItem(withLength: (show ?? true) ? 57 : 22)
                 self.statusItem.view = self.statusItemView
-                self.statusItemView.showSpeedContainer(show: show!)
+                self.statusItemView.showSpeedContainer(show: (show ?? true))
                 self.statusItemView.statusItem = self.statusItem
             }.disposed(by: disposeBag)
         
@@ -78,10 +78,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .proxyPortAutoSetObservable
             .distinctUntilChanged()
             .bind{ [unowned self]
-                enable in
-                self.proxySettingMenuItem.state = (enable ?? false) ? .on : .off
+                en in
+                let enable = en ?? false
+                self.proxySettingMenuItem.state = enable ? .on : .off
                 let image =
-                    NSImage(named: NSImage.Name(rawValue: "menu_icon"))!.tint(color: enable! ? NSColor.black : NSColor.gray)
+                    NSImage(named: NSImage.Name(rawValue: "menu_icon"))!.tint(color: enable ? NSColor.black : NSColor.gray)
                 ((self.statusItem.view) as! StatusItemView).imageView.image = image
             }.disposed(by: disposeBag)
         
