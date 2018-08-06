@@ -6,17 +6,21 @@
     <description>Most recent changes with links to updates.</description>
     <language>cn</language>
       <item>
-        <title>Version 0.6</title>
+        <title>Version 1.0</title>
         <description>
           <![CDATA[
             <ul>
-            <li>Sync the latest code with clash</li>
-            <li>Show network speed in menu bar</li>
+            <li>Version 1.0 Released!</li>
+            <li>If you have installed previous version. you may need to delete config file in ~/.config/clash/config.ini and regenerate it</li>
+            <li> Support select group </li>
+            <li> Support urlTest group </li>
+            <li> Support outbound mode </li>
+
             </ul>
           ]]>
         </description>
         <pubDate>Sat, 8 Aug 2018 15:20:11 +0000</pubDate>
-        <enclosure url="https://github.com/yichengchen/clashX/releases/download/0.6/ClashX.app.zip" sparkle:version="0.6" type="application/octet-stream"/>
+        <enclosure url="https://github.com/yichengchen/clashX/releases/download/1.0/ClashX.app.zip" sparkle:version="1.0" type="application/octet-stream"/>
       </item>
   </channel>
 </rss>
