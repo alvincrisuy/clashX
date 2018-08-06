@@ -86,11 +86,24 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Config" id="tck-zU-JKQ">
                                 <items>
-                                    <menuItem title="Generate config" id="5Ab-VJ-iIm">
+                                    <menuItem title="Generate Config" id="a4G-S3-jxT">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="actionGenConfig:" target="Voe-Tx-rLC" id="SBd-vV-e1R"/>
-                                        </connections>
+                                        <menu key="submenu" title="Generate Config" id="IeJ-1Q-UaF">
+                                            <items>
+                                                <menuItem title="Generate config" id="5Ab-VJ-iIm">
+                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                    <connections>
+                                                        <action selector="actionGenConfig:" target="Voe-Tx-rLC" id="SBd-vV-e1R"/>
+                                                    </connections>
+                                                </menuItem>
+                                                <menuItem title="Import bunch json file" id="GRE-Ra-Pkx">
+                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                    <connections>
+                                                        <action selector="actionImportBunchJsonFile:" target="Voe-Tx-rLC" id="wPl-iW-WvG"/>
+                                                    </connections>
+                                                </menuItem>
+                                            </items>
+                                        </menu>
                                     </menuItem>
                                     <menuItem title="Edit config Manually" id="DwE-WX-ETZ">
                                         <modifierMask key="keyEquivalentModifierMask"/>
@@ -102,12 +115,6 @@
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="actionUpdateConfig:" target="Voe-Tx-rLC" id="oW5-Ll-SY8"/>
-                                        </connections>
-                                    </menuItem>
-                                    <menuItem title="Import bunch json file" id="GRE-Ra-Pkx">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="actionImportBunchJsonFile:" target="Voe-Tx-rLC" id="wPl-iW-WvG"/>
                                         </connections>
                                     </menuItem>
                                 </items>

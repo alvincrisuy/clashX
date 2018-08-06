@@ -80,9 +80,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .bind{ [unowned self]
                 enable in
                 self.proxySettingMenuItem.state = (enable ?? false) ? .on : .off
-                let image = (enable ?? false) ?
-                    NSImage(named: NSImage.Name(rawValue: "menu_icon"))! :
-                    NSImage(named: NSImage.Name(rawValue: "menu_icon_disabled"))!
+                let image =
+                    NSImage(named: NSImage.Name(rawValue: "menu_icon"))!.tint(color: enable! ? NSColor.black : NSColor.gray)
                 ((self.statusItem.view) as! StatusItemView).imageView.image = image
             }.disposed(by: disposeBag)
         

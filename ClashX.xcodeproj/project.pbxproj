@@ -23,6 +23,7 @@
 		495A44CD20D266BA00888A0A /* ClashXLaunchHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 495A44BC20D2660A00888A0A /* ClashXLaunchHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		495A44D320D267D000888A0A /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A44D220D267D000888A0A /* LaunchAtLogin.swift */; };
 		4966E9E32118153A00A391FB /* NSUserNotificationCenter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4966E9E22118153A00A391FB /* NSUserNotificationCenter+Extension.swift */; };
+		4966E9E6211824F300A391FB /* NSImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4966E9E5211824F300A391FB /* NSImage+extension.swift */; };
 		497F0DF320DE2FE50077AD41 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 497F0DF220DE2FE50077AD41 /* Icon.icns */; };
 		4989F98020D01C8F0001E564 /* clash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989F97E20D01C8F0001E564 /* clash.a */; };
 		4989F98420D02D200001E564 /* Country.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = 4989F98320D02D200001E564 /* Country.mmdb */; };
@@ -32,10 +33,6 @@
 		49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF3B2020CD7463001EBF94 /* AppDelegate.swift */; };
 		49CF3B2520CD7465001EBF94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B2420CD7465001EBF94 /* Assets.xcassets */; };
 		49CF3B2820CD7465001EBF94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B2620CD7465001EBF94 /* Main.storyboard */; };
-		49CF3B3F20CD7845001EBF94 /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B3B20CD7845001EBF94 /* menu_icon.png */; };
-		49CF3B4020CD7845001EBF94 /* menu_icon_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B3C20CD7845001EBF94 /* menu_icon_disabled@2x.png */; };
-		49CF3B4120CD7845001EBF94 /* menu_icon_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B3D20CD7845001EBF94 /* menu_icon_disabled.png */; };
-		49CF3B4220CD7845001EBF94 /* menu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B3E20CD7845001EBF94 /* menu_icon@2x.png */; };
 		49CF3B5C20CE8068001EBF94 /* ProxyConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF3B5B20CE8068001EBF94 /* ProxyConfigManager.swift */; };
 		49CF3B5F20CE80D2001EBF94 /* install_proxy_helper.sh in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B5E20CE80D2001EBF94 /* install_proxy_helper.sh */; };
 		49CF3B6320CED9CF001EBF94 /* check_proxy_helper.sh in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B6220CED934001EBF94 /* check_proxy_helper.sh */; };
@@ -92,6 +89,7 @@
 		495A44C820D2660B00888A0A /* ClashXLaunchHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClashXLaunchHelper.entitlements; sourceTree = "<group>"; };
 		495A44D220D267D000888A0A /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
 		4966E9E22118153A00A391FB /* NSUserNotificationCenter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserNotificationCenter+Extension.swift"; sourceTree = "<group>"; };
+		4966E9E5211824F300A391FB /* NSImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+extension.swift"; sourceTree = "<group>"; };
 		497F0DF220DE2FE50077AD41 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		4989F97E20D01C8F0001E564 /* clash.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = clash.a; sourceTree = "<group>"; };
 		4989F97F20D01C8F0001E564 /* clash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clash.h; sourceTree = "<group>"; };
@@ -107,10 +105,6 @@
 		49CF3B2920CD7465001EBF94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49CF3B2A20CD7465001EBF94 /* ClashX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClashX.entitlements; sourceTree = "<group>"; };
 		49CF3B3520CD75DF001EBF94 /* ClashX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ClashX-Bridging-Header.h"; sourceTree = "<group>"; };
-		49CF3B3B20CD7845001EBF94 /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
-		49CF3B3C20CD7845001EBF94 /* menu_icon_disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon_disabled@2x.png"; sourceTree = "<group>"; };
-		49CF3B3D20CD7845001EBF94 /* menu_icon_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon_disabled.png; sourceTree = "<group>"; };
-		49CF3B3E20CD7845001EBF94 /* menu_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon@2x.png"; sourceTree = "<group>"; };
 		49CF3B4B20CE5232001EBF94 /* ProxyConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = ProxyConfig.xcodeproj; sourceTree = "<group>"; };
 		49CF3B5B20CE8068001EBF94 /* ProxyConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyConfigManager.swift; sourceTree = "<group>"; };
 		49CF3B5E20CE80D2001EBF94 /* install_proxy_helper.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install_proxy_helper.sh; sourceTree = "<group>"; };
@@ -198,6 +192,7 @@
 				4997732420D251A60009B136 /* SWBApplication.h */,
 				495A44D220D267D000888A0A /* LaunchAtLogin.swift */,
 				4966E9E22118153A00A391FB /* NSUserNotificationCenter+Extension.swift */,
+				4966E9E5211824F300A391FB /* NSImage+extension.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -251,11 +246,7 @@
 			children = (
 				4989F98D20D0AE990001E564 /* sampleConfig.ini */,
 				4989F98320D02D200001E564 /* Country.mmdb */,
-				49CF3B3D20CD7845001EBF94 /* menu_icon_disabled.png */,
-				49CF3B3C20CD7845001EBF94 /* menu_icon_disabled@2x.png */,
-				49CF3B3B20CD7845001EBF94 /* menu_icon.png */,
 				492C4864210EC9E4004554A0 /* ProxyConfig */,
-				49CF3B3E20CD7845001EBF94 /* menu_icon@2x.png */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -442,11 +433,7 @@
 				49CF3B2520CD7465001EBF94 /* Assets.xcassets in Resources */,
 				495340B020DE5F7200B0D3FF /* StatusItemView.xib in Resources */,
 				49CF3B2820CD7465001EBF94 /* Main.storyboard in Resources */,
-				49CF3B4220CD7845001EBF94 /* menu_icon@2x.png in Resources */,
-				49CF3B4120CD7845001EBF94 /* menu_icon_disabled.png in Resources */,
 				49CF3B5F20CE80D2001EBF94 /* install_proxy_helper.sh in Resources */,
-				49CF3B4020CD7845001EBF94 /* menu_icon_disabled@2x.png in Resources */,
-				49CF3B3F20CD7845001EBF94 /* menu_icon.png in Resources */,
 				4952C3CC2116E952004A4FA8 /* PreferencesWindowController.xib in Resources */,
 				4989F98420D02D200001E564 /* Country.mmdb in Resources */,
 				497F0DF320DE2FE50077AD41 /* Icon.icns in Resources */,
@@ -549,6 +536,7 @@
 				49CF3B6520CEE06C001EBF94 /* ConfigManager.swift in Sources */,
 				4952C3BF2115C7CA004A4FA8 /* ProxyMenuItemFactory.swift in Sources */,
 				4966E9E32118153A00A391FB /* NSUserNotificationCenter+Extension.swift in Sources */,
+				4966E9E6211824F300A391FB /* NSImage+extension.swift in Sources */,
 				4952C3CE2116EA2E004A4FA8 /* ProxyServerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
