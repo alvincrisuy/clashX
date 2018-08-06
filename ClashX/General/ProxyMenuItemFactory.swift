@@ -76,10 +76,10 @@ class ProxyMenuItemFactory {
                     items.state = .off
                 }
                 sender.state = .on
+                // remember select proxy
+                ConfigManager.selectedProxyMap[proxyGroup] = proxyName
             }
         }
-        
-
     }
     
     

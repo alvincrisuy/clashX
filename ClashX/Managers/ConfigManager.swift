@@ -51,4 +51,14 @@ class ConfigManager {
         }
     }
     
+    static var selectedProxyMap:[String:String] {
+        get{
+            return ["Proxy":"ProxyAuto"]
+            return UserDefaults.standard.dictionary(forKey: "selectedProxyMap") as? [String:String] ?? ["Proxy":"ProxyAuto"]
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "selectedProxyMap")
+        }
+    }
+    
 }

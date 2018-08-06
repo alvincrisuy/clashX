@@ -102,6 +102,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
                 
                 self.updateProxyList()
+                
+                if (ConfigManager.shared.proxyPortAutoSet) {
+                    _ = ProxyConfigManager.setUpSystemProxy(port: config!.port,socksPort: config!.socketPort)
+                }
         }.disposed(by: disposeBag)
         
         LaunchAtLogin.shared
@@ -136,6 +140,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         });
     }
     
+    func selectProxyGroupWithMemory(){
+        for item in ConfigManager.selectedProxyMap {
+            ApiRequest.updateProxyGroup(group: item.key, selectProxy: item.value) { (success) in
+                if (!success) {
+                    ConfigManager.selectedProxyMap[item.key] = nil
+                }
+            }
+        }
+    }
+    
     func updateProxyList() {
         ProxyMenuItemFactory.menuItems { [unowned self] (menus) in
             let startIndex = self.statusMenu.items.index(of: self.separatorLineTop)! + 1
@@ -159,6 +173,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             run()
         }
         syncConfig(){
+            self.selectProxyGroupWithMemory()
             DispatchQueue.main.asyncAfter(deadline:DispatchTime.now() + 1, execute: {
                 self.resetTrafficMonitor()
             })
@@ -169,12 +184,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ApiRequest.requestConfig{ (config) in
             guard config.port > 0 else {return}
             ConfigManager.shared.currentConfig = config
-            
-            if ConfigManager.shared.proxyPortAutoSet {
-                _ = ProxyConfigManager.setUpSystemProxy(port: config.port,socksPort: config.socketPort)
-                self.updateProxyList()
-                completeHandler?()
-            }
+            completeHandler?()
         }
     }
     
