@@ -20,6 +20,7 @@ class StatusItemView: NSView {
     @IBOutlet weak var speedContainerView: NSView!
     weak var statusItem:NSStatusItem?
     var disposeBag = DisposeBag()
+    var isDarkMode = false
     
     var onPopUpMenuAction:(()->())? = nil
     
@@ -43,6 +44,7 @@ class StatusItemView: NSView {
             let darkMode = (value ?? "Light") == "Dark"
             let image = NSImage(named: NSImage.Name(rawValue: "menu_icon"))!.tint(color: darkMode ? NSColor.white : NSColor.black)
             self.imageView.image = image
+            self.isDarkMode = darkMode
         }.disposed(by: disposeBag)
     }
     
@@ -96,5 +98,10 @@ extension StatusItemView:NSMenuDelegate {
         statusItem?.drawStatusBarBackground(in: self.bounds, withHighlight: highlight)
         image.unlockFocus()
         self.layer?.contents = image
+        
+        if !self.isDarkMode {
+            self.uploadSpeedLabel.textColor = highlight ? NSColor.white : NSColor.black
+            self.downloadSpeedLabel.textColor = highlight ? NSColor.white : NSColor.black
+        }
     }
 }

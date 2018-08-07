@@ -45,7 +45,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.updateProxyList()
         }
         setupData()
-//        os_log(<#T##message: StaticString##StaticString#>, <#T##args: CVarArg...##CVarArg#>)
     }
     
 
@@ -68,7 +67,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .showNetSpeedIndicatorObservable
             .bind {[unowned self] (show) in
                 self.showNetSpeedIndicatorMenuItem.state = (show ?? true) ? .on : .off
-                self.statusItem = NSStatusBar.system.statusItem(withLength: (show ?? true) ? 57 : 22)
+                self.statusItem = NSStatusBar.system.statusItem(withLength: (show ?? true) ? 65 : 25)
                 self.statusItem.view = self.statusItemView
                 self.statusItemView.showSpeedContainer(show: (show ?? true))
                 self.statusItemView.statusItem = self.statusItem
