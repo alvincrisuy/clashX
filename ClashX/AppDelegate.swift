@@ -24,6 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var proxyModeDirectMenuItem: NSMenuItem!
     @IBOutlet weak var proxyModeRuleMenuItem: NSMenuItem!
     
+    @IBOutlet weak var proxyModeMenuItem: NSMenuItem!
     @IBOutlet weak var showNetSpeedIndicatorMenuItem: NSMenuItem!
     @IBOutlet weak var separatorLineTop: NSMenuItem!
     @IBOutlet weak var sepatatorLineEndProxySelect: NSMenuItem!
@@ -42,7 +43,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItemView.onPopUpMenuAction = {
             [weak self] in
             guard let `self` = self else {return}
-            self.updateProxyList()
+            self.syncConfig() {
+                self.updateProxyList()
+            }
         }
         setupData()
     }
@@ -96,6 +99,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 case .global:self.proxyModeGlobalMenuItem.state = .on
                 case .rule:self.proxyModeRuleMenuItem.state = .on
                 }
+                
+                self.sepatatorLineEndProxySelect.isHidden = (config!.mode == .direct)
+                
+                self.proxyModeMenuItem.title = "Proxy Mode (\(config!.mode.rawValue))"
                 
                 self.updateProxyList()
                 
@@ -163,6 +170,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
+    
     
     func startProxy() {
         ssQueue.async {

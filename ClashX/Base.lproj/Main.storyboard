@@ -20,6 +20,7 @@
                         <outlet property="autoStartMenuItem" destination="B1J-XB-BiZ" id="xaS-h5-qd0"/>
                         <outlet property="proxyModeDirectMenuItem" destination="Np6-Pm-Lo3" id="DER-K7-DNW"/>
                         <outlet property="proxyModeGlobalMenuItem" destination="yiM-U4-MNg" id="M7s-kl-aPh"/>
+                        <outlet property="proxyModeMenuItem" destination="jGT-1M-xJu" id="3Xj-xK-MJj"/>
                         <outlet property="proxyModeRuleMenuItem" destination="89n-bD-JHk" id="lT1-J1-X3k"/>
                         <outlet property="proxySettingMenuItem" destination="8se-yr-wmp" id="yvm-QP-yoA"/>
                         <outlet property="separatorLineTop" destination="1fM-p6-bHd" id="NFb-qS-TKR"/>
@@ -30,9 +31,9 @@
                 </customObject>
                 <menu id="Afa-lD-EbR">
                     <items>
-                        <menuItem title="Proxy mode" id="jGT-1M-xJu">
+                        <menuItem title="Proxy mode (Global)" id="jGT-1M-xJu">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="Proxy mode" id="UU2-uE-YB4">
+                            <menu key="submenu" title="Proxy mode (Global)" id="UU2-uE-YB4">
                                 <items>
                                     <menuItem title="Global" id="yiM-U4-MNg">
                                         <modifierMask key="keyEquivalentModifierMask"/>
