@@ -7,23 +7,26 @@
 //
 
 import Foundation
-import os
+import SwiftLog
 
 class Logger {
     static let shared = Logger()
-    var logger:OSLog?
+    let queue = DispatchQueue(label: "clash.logger")
     private init() {
-        if #available(OSX 10.12, *) {
-            self.logger = OSLog(subsystem: "com.clashX", category: "clashX")
-        } else {
+        Log.logger.name = "ClashX" //default is "logfile"
+        Log.logger.maxFileSize = 2048 //default is 1024
+        Log.logger.maxFileCount = 4 //default is 4
+        Log.logger.directory = (NSHomeDirectory() as NSString).appendingPathComponent("/Library/Logs/ClashX")
+        Log.logger.printToConsole = false //default is true
+    }
+    
+    private func logToFile(msg:String) {
+        self.queue.sync {
+            logw(msg)
         }
     }
     
     static func log(msg:String) {
-        if #available(OSX 10.12, *) {
-            os_log("%{public}s", log: shared.logger!, type: .default, msg)
-        } else {
-            NSLog("%@", msg)
-        }
+        shared.logToFile(msg: msg)
     }
 }
