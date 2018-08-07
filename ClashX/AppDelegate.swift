@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.updateProxyList()
         }
         setupData()
-        
+//        os_log(<#T##message: StaticString##StaticString#>, <#T##args: CVarArg...##CVarArg#>)
     }
     
 
@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NotificationCenter.default.rx.notification(kShouldUpDateConfig).bind {
             [unowned self] (note)  in
             self.syncConfig(){
-                self.resetTrafficMonitor()
+                self.resetStreamApi()
             }
             }.disposed(by: disposeBag)
         
@@ -81,9 +81,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 en in
                 let enable = en ?? false
                 self.proxySettingMenuItem.state = enable ? .on : .off
-                let image =
-                    NSImage(named: NSImage.Name(rawValue: "menu_icon"))!.tint(color: enable ? NSColor.black : NSColor.gray)
-                ((self.statusItem.view) as! StatusItemView).imageView.image = image
             }.disposed(by: disposeBag)
         
         ConfigManager.shared
@@ -175,7 +172,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         syncConfig(){
             self.selectProxyGroupWithMemory()
             DispatchQueue.main.asyncAfter(deadline:DispatchTime.now() + 1, execute: {
-                self.resetTrafficMonitor()
+                self.resetStreamApi()
             })
         }
     }
@@ -188,10 +185,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func resetTrafficMonitor() {
+    func resetStreamApi() {
         ApiRequest.shared.requestTrafficInfo(){ [weak self] up,down in
             guard let `self` = self else {return}
             ((self.statusItem.view) as! StatusItemView).updateSpeedLabel(up: up, down: down)
+        }
+        
+        ApiRequest.shared.requestLog { (type, msg) in
+            Logger.log(msg: msg)
         }
     }
 
@@ -249,7 +250,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func actionUpdateConfig(_ sender: Any) {
         ApiRequest.requestConfigUpdate() { [unowned self] success in
             if (success) {
-                self.syncConfig(){self.resetTrafficMonitor()}
+                self.syncConfig(){self.resetStreamApi()}
                 NSUserNotificationCenter
                     .default
                     .post(title: "Reload Config Succeed", info: "succees")

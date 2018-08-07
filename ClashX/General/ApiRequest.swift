@@ -15,7 +15,8 @@ class ApiRequest{
     static let shared = ApiRequest()
     
     var trafficReq:DataRequest? = nil
-    
+    var logReq:DataRequest? = nil
+
     static func requestConfig(completeHandler:@escaping ((ClashConfig)->())){
         request(ConfigManager.apiUrl + "/configs", method: .get).responseData{
             res in
@@ -33,6 +34,19 @@ class ApiRequest{
             if let jsonData = try? JSONSerialization.jsonObject(with: data) as? [String:Int] {
                 callback(jsonData!["up"] ?? 0, jsonData!["down"] ?? 0)
             }
+        }
+    }
+    
+    func requestLog(callback:@escaping ((String,String)->()) ){
+        self.logReq?.cancel()
+        
+        self.logReq =
+            request(ConfigManager.apiUrl + "/logs").stream {(data) in
+                if let jsonData = try? JSONSerialization.jsonObject(with: data) as? [String:String] {
+                    let type = jsonData!["type"] ?? "info"
+                    let payload = jsonData!["payload"] ?? ""
+                    callback(type,payload)
+                }
         }
     }
     
