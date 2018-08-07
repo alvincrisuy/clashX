@@ -8,6 +8,9 @@
 
 import Foundation
 import AppKit
+import RxCocoa
+import RxSwift
+
 class StatusItemView: NSView {
     
     @IBOutlet var imageView: NSImageView!
@@ -16,6 +19,7 @@ class StatusItemView: NSView {
     @IBOutlet var downloadSpeedLabel: NSTextField!
     @IBOutlet weak var speedContainerView: NSView!
     weak var statusItem:NSStatusItem?
+    var disposeBag = DisposeBag()
     
     var onPopUpMenuAction:(()->())? = nil
     
@@ -25,10 +29,21 @@ class StatusItemView: NSView {
             let view = (topLevelObjects!.first(where: { $0 is NSView }) as? StatusItemView)!
             view.statusItem = statusItem
             view.menu = statusMenu
+            view.setupView()
             statusMenu.delegate = view
             return view
         }
         return NSView() as! StatusItemView
+    }
+    
+    func setupView() {
+        UserDefaults.standard
+            .rx.observe(String.self, "AppleInterfaceStyle").bind {
+            value in
+            let darkMode = (value ?? "Light") == "Dark"
+            let image = NSImage(named: NSImage.Name(rawValue: "menu_icon"))!.tint(color: darkMode ? NSColor.white : NSColor.black)
+            self.imageView.image = image
+        }.disposed(by: disposeBag)
     }
     
     func updateSpeedLabel(up:Int,down:Int) {
