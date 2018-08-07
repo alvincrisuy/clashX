@@ -21,7 +21,7 @@ class Logger {
     
     static func log(msg:String) {
         if #available(OSX 10.12, *) {
-            os_log("%@", log: shared.logger!, type: .default, msg)
+            os_log("%{public}s", log: shared.logger!, type: .default, msg)
         } else {
             NSLog("%@", msg)
         }
