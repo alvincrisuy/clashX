@@ -298,6 +298,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func actionShowNetSpeedIndicator(_ sender: NSMenuItem) {
         ConfigManager.shared.showNetSpeedIndicator = !ConfigManager.shared.showNetSpeedIndicator
     }
+    
+    @IBAction func actionShowLog(_ sender: Any) {
+        NSWorkspace.shared.openFile(Logger.shared.logFilePath())
+
+    }
 }
 
 

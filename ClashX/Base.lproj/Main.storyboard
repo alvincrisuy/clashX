@@ -131,6 +131,12 @@
                                             <action selector="checkForUpdates:" target="fth-rt-saN" id="gaF-35-d7h"/>
                                         </connections>
                                     </menuItem>
+                                    <menuItem title="Show Log" id="xxZ-9l-69m">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="actionShowLog:" target="Voe-Tx-rLC" id="riD-KO-PNs"/>
+                                        </connections>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </menuItem>

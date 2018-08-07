@@ -29,4 +29,8 @@ class Logger {
     static func log(msg:String) {
         shared.logToFile(msg: msg)
     }
+    
+    func logFilePath() -> String {
+        return Log.logger.currentPath
+    }
 }
